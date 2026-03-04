@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход / Регистрация — Marina Art</title>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        .auth-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            background: #fff;
+            border: 1px solid #eee;
+            text-align: center;
+        }
+        .auth-tabs { display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; }
+        .auth-tab { cursor: pointer; color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .auth-tab.active { color: var(--accent-color); border-bottom: 1px solid var(--accent-color); }
+        
+        .auth-form { display: none; flex-direction: column; gap: 15px; }
+        .auth-form.active { display: flex; }
+        
+        .auth-form input {
+            padding: 12px;
+            border: 1px solid #eee;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .auth-btn {
+            background: var(--accent-color);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .auth-btn:hover { opacity: 0.8; }
+        .auth-toggle-msg { margin-top: 20px; font-size: 0.85rem; color: var(--text-muted); }
+        .auth-toggle-msg span { color: var(--accent-color); cursor: pointer; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="auth-container">
+    <a href="index.html" class="logo" style="display: block; margin-bottom: 30px;">MARINA<span>ART</span></a>
+    
+    <div class="auth-tabs">
+        <div class="auth-tab active" id="tab-login">Вход</div>
+        <div class="auth-tab" id="tab-register">Регистрация</div>
+    </div>
+
+    <form id="login-form" class="auth-form active">
+        <input type="email" id="login-email" placeholder="E-mail" required>
+        <input type="password" id="login-pass" placeholder="Пароль" required>
+        <button type="submit" class="auth-btn">Войти</button>
+    </form>
+
+    <form id="register-form" class="auth-form">
+        <input type="text" id="reg-name" placeholder="Имя" required>
+        <input type="email" id="reg-email" placeholder="E-mail" required>
+        <input type="password" id="reg-pass" placeholder="Пароль" required>
+        <button type="submit" class="auth-btn">Создать аккаунт</button>
+    </form>
+
+    <p id="auth-error" style="color: #e74c3c; font-size: 0.8rem; margin-top: 15px; display: none;"></p>
+</div>
+
+<script src="public/js/auth.js"></script>
+</body>
+</html>

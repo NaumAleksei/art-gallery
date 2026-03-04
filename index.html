@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery & Shop | Интерьерная живопись</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="public/css/style.css">
+    
+    <script src="public/js/main.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <div class="logo">MARINA<span>ART</span></div>
+            
+           <nav id="main-nav">
+    <a href="#home">Главная</a>
+    <a href="#about">О нас</a>
+    <a href="#catalog">Галерея</a>
+    <a href="#master-classes">Мастер-классы</a>
+    <a href="#contact">Контакты</a>
+</nav>
+
+           <div class="header-controls">
+    <a href="login.html" class="icon-btn user-login">
+        <i class="far fa-user"></i>
+        <span>Вход</span>
+    </a>
+    
+    <a href="cart.html" class="icon-btn cart-icon">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count">0</span>
+    </a>
+    
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+    </header>
+
+   <section id="home" class="hero-slider">
+    <div class="slider-wrapper">
+        
+        <div class="slide active" style="background-image: url('public/images/startbanner5-3.jpg');">
+            <div class="container hero-content">
+                <p class="hero-subtitle">Коллекция «Текстура времени»</p>
+                <h1>Эстетика фактурных линий</h1>
+                <p>Интерьерные картины с объемной пастой и поталью для современных пространств.</p>
+                <a href="#catalog" class="btn btn-primary">Смотреть коллекцию</a>
+            </div>
+        </div>
+
+        <div class="slide" style="background-image: url('public/images/startbanner4-3.jpg');">
+            <div class="container hero-content">
+                <p class="hero-subtitle">Минимализм в объеме</p>
+                <h1>Гипсовые барельефы</h1>
+                <p>Чистота белого цвета и игра теней в лаконичных настенных панно.</p>
+                <a href="#catalog" class="btn btn-primary">Подобрать панно</a>
+            </div>
+        </div>
+
+        <div class="slide" style="background-image: url('public/images/startbanner2-3.jpg');">
+            <div class="container hero-content">
+                <p class="hero-subtitle">Абстракция и цвет</p>
+                <h1>Гармония в интерьере</h1>
+                <p>Уникальные абстрактные композиции акрилом, созданные подчеркнуть ваш стиль.</p>
+                <a href="#about" class="btn btn-primary">О технике</a>
+            </div>
+        </div>
+
+        <div class="slide" style="background-image: url('public/images/startbanner3-3.jpg');">
+            <div class="container hero-content">
+                <p class="hero-subtitle">Абстракция и цвет</p>
+                <h1>Гармония в интерьере</h1>
+                <p>Уникальные абстрактные композиции акрилом, созданные подчеркнуть ваш стиль.</p>
+                <a href="#about" class="btn btn-primary">О технике</a>
+            </div>
+        </div>
+
+        <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+             <span class="dot" data-slide="3"></span>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about-section container">
+    <div class="about-grid">
+        <div class="about-image">
+            <img src="public/images/me.jpg" alt="Марина Наумова - Художник">
+        </div>
+        <div class="about-content">
+            <p class="hero-subtitle">История и техника</p>
+            <h2>О художнике и мастерской</h2>
+            <p>Галерея авторских работ Марины Наумовой, где абстракция встречается с этническими мотивами. Фактурные работы в теплых тонах
+ созданы, чтобы приносить в дом гармонию, ясность и тактильный комфорт.</p>
+<br>
+            <p>Каждая картина — это эксперимент с тенями и светом, вдохновленный спокойствием природы и современным минимализмом интерьеров.</p>
+            <div class="about-stats">
+                <div class="stat"><strong>5+</strong><span>Лет творчества</span></div>
+                <div class="stat"><strong>50+</strong><span>Картин в частных коллекциях</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+       <section id="catalog" class="catalog-section container">
+    <div class="carousel-viewport" id="viewport-1">
+        <div class="art-grid" id="track-1"></div>
+    </div>
+</section>
+
+<section id="catalog" class="catalog-section container">
+    <div class="carousel-viewport" id="viewport-2">
+        <div class="art-grid" id="track-2"></div>
+    </div>
+</section>
+
+<section class="master-classes">
+    <div class="container promo-grid">
+        <div class="promo-content">
+            <p class="promo-subtitle">Наши Мастер-классы</p>
+            <p>Создайте свою медитативную абстракцию с этническим характером. Позвольте рукам вести вас, а текстуре — рассказывать историю вашего внутреннего покоя. </p>
+                <br>
+ <p>Текстурная паста - густая пластичная масса на основе акрила, которая после высыхания становится твердой и прочной. При нанесении на холст, она создаёт объём, рельеф и фактуру.
+</p>
+            <a href="https://t.me/Mari_naumova_art" class="btn-primary-dark">Написать в Telegram</a>
+        </div>
+        <div class="promo-image">
+            <img src="public/images/master.jpg" alt="Процесс создания картины">
+        </div>
+    </div>
+</section>
+
+<section class="info-section">
+    <div class="container">
+        <div class="info-grid">
+            
+            <div class="info-card">
+                <div class="info-image">
+                    <img src="public/images/master.jpg" alt="Эко-подход:">
+                </div>
+                <div class="info-content">
+                 <p> Эко подход. Используем только экологичные материалы</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-image">
+                    <img src="public/images/master2.jpg" alt="Пигменты">
+                </div>
+                <div class="info-content">
+                  <p>Пасту можно и нужно! трогать руками, это усиливает заземление и медитативный эффект.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-image">
+                    <img src="public/images/master3.jpg" alt="Упаковка">
+                </div>
+                <div class="info-content">
+                 <p>Мастер-класс проходит при свечах или под звуки этнических инструментов.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="promo-section second-promo">
+    <div class="container promo-grid promo-grid-reverse">
+        <div class="promo-image">
+            <img src="public/images/master2.jpg" alt="Мастерская художника">
+        </div>
+
+        <div class="promo-content">
+            <p class="promo-subtitle">Что включено:</p>
+            <p> Материалы-холсты, краски, в том числе упаковка</p>
+            <p class="promo-subtitle1">Время:</p> 
+            <p>Продолжительность 2 часа</p>
+                <br>
+<p>Место проведения мастер классов — наша студия спроектирована так, чтобы вы могли полностью погрузиться 
+в тактильный опыт.  Здесь мы работаем с натуральными материалами, пьем коллекционный чай и создаем искусство в потоке спокойствия.
+ </p>
+            <a href="#about" class="btn-primary-dark">О процессе</a>
+        </div>
+    </div>
+</section>
+
+<section class="services-section">
+    <div class="container">
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="public/images/1price.jpg" alt="Мастер-класс">
+                </div>
+                <div class="service-info">
+                    <div class="service-price">6500 ₽</div>
+                    <h3>Индивидуальный урок</h3>
+                    <p>Глубокая работа один на один с художником. Создание картины под конкретный  интерьер заказчика.</p>
+                    <button class="book-btn">Забронировать</button>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="public/images/2price.jpg" alt="Консультация">
+                </div>
+                <div class="service-info">
+                    <div class="service-price">2500 ₽</div>
+                    <h3>Групповой воркшоп <br> (до 6 человек)</h3>
+                    <p>Обмен энергией, знакомство с единомышленниками, общая творческая волна под медитативную музыку.</p>
+                    <button class="book-btn">Забронировать</button>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="public/images/3price.jpg" alt="Сертификат">
+                </div>
+                <div class="service-info">
+                    <div class="service-price">5000 ₽</div>
+                    <h3>Арт-свидание для пары </h3>
+                    <p>Создание одной общей картины или диптиха(двух частей одного целого). Акцент на взаимодействии.</p>
+                    <button class="book-btn">Забронировать</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section container">
+    <h2>Связаться с мастерской</h2>
+    <p>Пишите нам для заказа индивидуальных работ или уточнения деталей доставки.</p>
+    <div class="contact-links">
+        <a href="https://t.me/Mari_naumova_art" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+        <a href="#" class="contact-link copy-email" data-email="mvnaumova@mail.ru">
+    <i class="far fa-envelope"></i> 
+    <span class="email-text">mvnaumova@mail.ru</span>
+</a>
+    </a>
+    </div>
+</section>
+
+ <section class="newsletter">
+    <div class="container newsletter-wrap">
+        <div class="newsletter-text">
+            <h2>Присоединяйтесь к закрытому клубу</h2>
+            <p>Узнавайте о новых поступлениях и частных выставках первыми.</p>
+        </div>
+        <form id="subscribe-form" class="newsletter-form">
+            <input type="email" placeholder="Введите ваш e-mail" required>
+            <button type="submit">Подписаться</button>
+        </form>
+    </div>
+</section>
+
+  <footer class="main-footer">
+    <div class="container footer-grid">
+        <div class="footer-column">
+            <a href="#home" class="logo">MARINA<span>ART</span></a>
+            <p class="footer-about">Создание интерьерных картин ручной работы. Эстетика фактуры и минимализма для вашего пространства.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-column">
+            <h4>Навигация</h4>
+            <ul class="footer-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#catalog">Галерея</a></li>
+                <li><a href="#about">О художнике</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Контакты</h4>
+            <ul class="footer-info">
+                <li><i class="fas fa-map-marker-alt"></i> Волгоград, Студия Art Gallery</li>
+                <li><i class="far fa-envelope"></i> mvnaumova@mail.ru</li>
+                <li><i class="fas fa-phone-alt"></i> +7 (929) 788-05-71</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2026 Marina Art Gallery. Все права защищены.</p>
+            <p class="designer">Design by Naumov ALeksei</p>
+        </div>
+    </div>
+</footer>
+
+    <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox-caption"></div>
+</div>
+
+<div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+        <h2>Ваша корзина</h2>
+        <button id="close-cart" class="close-btn">&times;</button>
+    </div>
+    
+    <div id="cart-items" class="cart-items-container">
+        <p class="empty-msg">В корзине пока пусто</p>
+    </div>
+
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Итого:</span>
+            <span id="cart-total-price">0 ₽</span>
+        </div>
+        <button id="checkout-btn" class="checkout-btn">Оформить заказ</button>
+    </div>
+</div>
+<div id="cart-overlay" class="cart-overlay"></div>
+
+</body>
+</html>
