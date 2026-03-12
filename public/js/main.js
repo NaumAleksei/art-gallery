@@ -21,36 +21,50 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // --- Логика верхнего баннера ---
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.hero-slide'); // Убедитесь, что у вас в HTML есть этот класс
-    
-    function showSlide(index) {
-        if (slides.length === 0) return;
-        
-        // Убираем активный класс у всех и добавляем нужному
-        slides.forEach(slide => slide.classList.remove('active'));
-        
-        // Проверка границ индекса
-        currentSlide = (index + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
+   // --- Логика верхнего баннера ---
+    // --- Логика верхнего баннера ---
+let currentSlide = 0;
+// ИСПРАВЛЕНО: селектор изменен с '.hero-slide' на '.slide'
+const slides = document.querySelectorAll('.slide'); 
+const dots = document.querySelectorAll('.dot'); 
+let bannerInterval;
 
-    // Инициализируем первый слайд
-    if (slides.length > 0) {
-        showSlide(0);
-    }
+function showSlide(index) {
+    if (slides.length === 0) return;
 
-    // Автопереключение (ваш интервал, теперь рабочий)
-    setInterval(() => {
+    // Убираем активный класс у всех слайдов и точек
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    // Вычисляем индекс (с закольцовкой)
+    currentSlide = (index + slides.length) % slides.length;
+
+    // Добавляем активный класс текущим элементам
+    slides[currentSlide].classList.add('active');
+    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+}
+
+// Функция для запуска/сброса таймера
+function startAutoPlay() {
+    clearInterval(bannerInterval);
+    bannerInterval = setInterval(() => {
         showSlide(currentSlide + 1);
-    }, 5000);
+    }, 3000);
+}
 
-    // Автопереключение баннера каждые 5 сек
-setInterval(() => {
-    let nextIndex = (currentSlide + 1) % slides.length;
-    showSlide(nextIndex);
-}, 5000);
+// Обработка кликов по точкам
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        showSlide(index);
+        startAutoPlay(); // Сбрасываем таймер при ручном переключении
+    });
+});
 
+// Инициализация
+if (slides.length > 0) {
+    showSlide(0);
+    startAutoPlay();
+}
 // Обработка кнопок мастер-классов
 document.querySelectorAll('.booking-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
