@@ -20,6 +20,31 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 14, title: "Хлопок", category: "Акрил, паста", price: "3000 ₽", image: "public/images/13.jpg", size: "30x30", likes: 14 }
     ];
 
+    // --- Логика верхнего баннера ---
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide'); // Убедитесь, что у вас в HTML есть этот класс
+    
+    function showSlide(index) {
+        if (slides.length === 0) return;
+        
+        // Убираем активный класс у всех и добавляем нужному
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Проверка границ индекса
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Инициализируем первый слайд
+    if (slides.length > 0) {
+        showSlide(0);
+    }
+
+    // Автопереключение (ваш интервал, теперь рабочий)
+    setInterval(() => {
+        showSlide(currentSlide + 1);
+    }, 5000);
+
     // Автопереключение баннера каждые 5 сек
 setInterval(() => {
     let nextIndex = (currentSlide + 1) % slides.length;
@@ -79,40 +104,62 @@ document.querySelectorAll('.booking-btn').forEach(btn => {
     if (track2) track2.innerHTML = [...lowerPaintings, ...lowerPaintings].map(createCardHTML).join('');
 
     // 3. Единая логика карусели
-    function setupCarousel(track) {
-        if (!track) return;
-        
-        let scrollAmount = 0;
-        let isPaused = false;
+  function setupCarousel(track) {
+    if (!track) return;
+    
+    let scrollAmount = 0;
+    let isPaused = false;
+    let speed = 0.5; // Скорость автопрокрутки
 
-        function animate() {
-            if (!isPaused) {
-                scrollAmount -= 0.5;
-                const halfWidth = track.scrollWidth / 2;
-                if (Math.abs(scrollAmount) >= halfWidth) {
-                    scrollAmount = 0;
-                }
-                track.style.transform = `translateX(${scrollAmount}px)`;
+    function animate() {
+        if (!isPaused) {
+            scrollAmount -= speed;
+            
+            const halfWidth = track.scrollWidth / 2;
+            // Плавный перезапуск цикла
+            if (Math.abs(scrollAmount) >= halfWidth) {
+                scrollAmount = 0;
             }
-            requestAnimationFrame(animate);
+            
+            track.style.transition = 'none'; // Важно: для автопрокрутки transition не нужен
+            track.style.transform = `translateX(${scrollAmount}px)`;
         }
-
-        // Ждем загрузки всех картинок, чтобы верно рассчитать ширину
-        window.addEventListener('load', animate);
-
-        track.addEventListener('mouseenter', () => isPaused = true);
-        track.addEventListener('mouseleave', () => isPaused = false);
-        track.addEventListener('touchstart', () => isPaused = true);
-        track.addEventListener('touchend', () => isPaused = false);
-
-        return {
-            move: (dir) => { 
-                const card = track.querySelector('.art-card');
-                const cardWidth = card ? card.offsetWidth + parseInt(window.getComputedStyle(card).marginRight) : 380;
-                scrollAmount += (dir * cardWidth); 
-            }
-        };
+        requestAnimationFrame(animate);
     }
+
+    // Запуск после загрузки контента
+    window.addEventListener('load', animate);
+
+    // Пауза при наведении
+    track.addEventListener('mouseenter', () => isPaused = true);
+    track.addEventListener('mouseleave', () => isPaused = false);
+
+    return {
+        move: (dir) => { 
+            const card = track.querySelector('.art-card');
+            const style = window.getComputedStyle(card);
+            const marginRight = parseInt(style.marginRight) || 0;
+            const cardWidth = card ? card.offsetWidth + marginRight : 380;
+            
+            // 1. Временно ставим паузу, чтобы анимация не перебивала прыжок
+            isPaused = true;
+            
+            // 2. Включаем плавность только на время перемещения
+            track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+            
+            // 3. Обновляем общую переменную положения
+            scrollAmount += (dir * cardWidth);
+            
+            // 4. Применяем сдвиг
+            track.style.transform = `translateX(${scrollAmount}px)`;
+            
+            // 5. После окончания анимации (0.6с) снимаем паузу
+            setTimeout(() => {
+                isPaused = false;
+            }, 600);
+        }
+    };
+}
 
     const control1 = setupCarousel(track1);
     const control2 = setupCarousel(track2);
