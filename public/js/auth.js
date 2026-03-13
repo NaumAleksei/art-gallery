@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (user) {
             localStorage.setItem('currentUser', JSON.stringify(user));
-            window.location.href = 'index.html'; // Уходим на главную
+            window.location.href = '/';
         } else {
             errorMsg.innerText = "Неверный email или пароль";
             errorMsg.style.display = 'block';
