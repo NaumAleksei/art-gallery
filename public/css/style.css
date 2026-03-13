@@ -93,6 +93,10 @@ html {
     display: flex;
     justify-content: center;
     gap: 40px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 }
 
 .contact-links a {
@@ -104,25 +108,14 @@ html {
     gap: 10px;
     transition: var(--transition);
     padding: 10px 20px;
+    font-weight: 500;
     border: 1px solid rgba(0,0,0,0.1); /* Легкая рамка вокруг кнопок связи */
+    word-break: break-all;
 }
 
 .contact-links a:hover {
     background-color: var(--accent-color);
     color: #fff;
-}
-
-.contact-links {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-.contact-links a {
-    text-decoration: none;
-    color: var(--accent-color);
-    font-weight: 500;
 }
 
 @media (max-width: 768px) {
@@ -1330,4 +1323,73 @@ header {
 
 .hero-slide.active {
     opacity: 1;
+}
+/* ВСТАВИТЬ В САМЫЙ КОНЕЦ ФАЙЛА */
+
+@media (max-width: 768px) {
+    /* 1. Исправляем сетку контактов */
+    .contact-section .contact-links {
+        display: flex !important;
+        flex-direction: column !important; /* Строго в колонку */
+        align-items: center !important;
+        gap: 15px !important;
+        width: 100%;
+    }
+
+    /* 2. Делаем кнопки одинаковыми и красивыми */
+    .contact-section .contact-links a {
+        width: 100%;
+        max-width: 320px; /* Чтобы не были на весь экран */
+        justify-content: center;
+        text-align: center;
+        word-break: normal; /* ОТМЕНЯЕМ разрыв слов для обычного текста */
+        padding: 15px;
+    }
+
+    /* 3. Разрешаем разрыв только для email-текста внутри */
+    .contact-section .contact-links a .email-text {
+        word-break: break-all; 
+        font-size: 0.9rem;
+    }
+
+    /* 4. Убираем возможные конфликты с другими секциями */
+    .contact-section {
+        padding: 60px 20px !important;
+        margin-top: 50px !important;
+    }
+/* Стили для самого навигационного меню на мобилке */
+    #main-nav {
+        display: none; /* Изначально скрыто */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Прямо под шапкой */
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        z-index: 999;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    }
+
+    /* Когда меню активно (добавлено через JS) */
+    #main-nav.active {
+        display: flex;
+    }
+
+    #main-nav a {
+        padding: 15px 0;
+        border-bottom: 1px solid #f9f9f9;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Анимация иконки бургера (опционально) */
+    .menu-toggle {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+    }
+
 }

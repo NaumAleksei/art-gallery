@@ -88,6 +88,36 @@ document.querySelectorAll('.booking-btn').forEach(btn => {
 
     let cart = JSON.parse(localStorage.getItem('cartData')) || [];
 
+    const menuToggle = document.getElementById('mobile-menu');
+    const mainNav = document.getElementById('main-nav');
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            // Переключаем класс active у меню
+            mainNav.classList.toggle('active');
+            
+            // Меняем иконку с "барс" на "крестик" (если используете FontAwesome)
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Закрываем меню при клике на любую ссылку внутри него
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    }
+
     // 2. Функция генерации карточки
     function createCardHTML(p) {
         return `
