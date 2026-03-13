@@ -733,7 +733,7 @@ header {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* 40% затемнения */
+    background: rgba(0, 0, 0, 0.2); /* 40% затемнения */
     z-index: 2;
 }
 
@@ -899,28 +899,20 @@ header {
     padding-right: 20px;
 }
 
-.promo-subtitle {
-    display: block;             /* Чтобы он занимал всю строку */
+/* Общие стили для подзаголовков в промо-блоке */
+.promo-content .promo-subtitle,
+.promo-content .promo-subtitle1,
+.promo-content .promo-subtitle2 {
+    display: block;
     text-transform: uppercase;
-    letter-spacing: 10px;        /* Можно чуть уменьшить, если шрифт очень крупный */
-    font-size: 10rem;            /* Твой желаемый размер */
-    line-height: 1.1;           /* Чтобы строки не были слишком далеко друг от друга */
-    color: var(--accent-color); /* Делаем его основным цветом, а не приглушенным */
-    margin-bottom: 30px;
-    font-family: 'Cormorant Garamond', serif; /* Используем красивый шриф для заголовков */
-    font-weight: 600;
-}
-
-.promo-subtitle1 {
-    display: block;             /* Чтобы он занимал всю строку */
-    text-transform: uppercase;
-    letter-spacing: 10px;        /* Можно чуть уменьшить, если шрифт очень крупный */
-    font-size: 10rem;            /* Твой желаемый размер */
-    line-height: 1.1;           /* Чтобы строки не были слишком далеко друг от друга */
-    color: var(--accent-color); /* Делаем его основным цветом, а не приглушенным */
-    margin-bottom: 30px;
-    font-family: 'Cormorant Garamond', serif; /* Используем красивый шриф для заголовков */
-    font-weight: 600;
+    letter-spacing: 2px;         /* Уменьшили, чтобы текст читался */
+    font-size: 1.2rem;           /* Адекватный размер для подзаголовка */
+    line-height: 1.2;            /* Нормальный интервал */
+    color: var(--accent-color);
+    margin-top: 25px;            /* Отступ сверху от предыдущего блока */
+    margin-bottom: 8px;          /* Маленький отступ до описания под ним */
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
 }
 
 /* Обязательно добавь это, чтобы на телефонах текст не вылезал за края */
@@ -934,24 +926,35 @@ header {
         font-size: 2.5rem;      /* Уменьшаем размер для мобильных */
     }
 }
+@media (max-width: 768px) {
+    .promo-subtitle2 {
+        font-size: 2.5rem;      /* Уменьшаем размер для мобильных */
+    }
+}
+/* Обнуляем верхний отступ для самого первого заголовка */
+.promo-content .promo-subtitle:first-of-type {
+    margin-top: 0;
+}
 
 .promo-content h2 {
     font-size: 2.8rem;
     line-height: 1.2;
-    margin-bottom: 25px;
+    margin-top: 5px;    /* Притягиваем h2 к гигантским буквам */
+    margin-bottom: 20px;
     font-family: 'Cormorant Garamond', serif;
 }
-
-.promo-content p {
-    font-size: 1.05rem;
+.promo-content p:not([class]) {
+    font-size: 1rem;
+    line-height: 1.6;
     color: #444;
-    margin-bottom: 40px;
-    line-height: 1.8;
+    margin-bottom: 0;           /* Убираем лишние дыры */
 }
+
 
 /* Стили кнопки для этого блока (темная) */
 .btn-primary-dark {
     display: inline-block;
+    margin-top: 50px;
     padding: 18px 40px;
     background-color: var(--accent-color);
     color: #fff;

@@ -1,30 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Данные для картин
     const upperPaintings = [
-        { id: 1, title: "Ом", category: "Акрил, паста", price: "4500 ₽", image: "public/images/1.jpg", size: "50x70", likes: 12 },
-        { id: 2, title: "Мандала", category: "Акрил, паста", price: "4500 ₽", image: "public/images/2.jpg", size: "40x40", likes: 21 },
-        { id: 3, title: "Сквозь свет", category: "Акрил, паста", price: "4500 ₽", image: "public/images/3.jpg", size: "60x80", likes: 15 },
-        { id: 4, title: "Осень", category: "Акрил, паста", price: "5500 ₽", image: "public/images/4.jpg", size: "50x60", likes: 19 },
-        { id: 5, title: "Намасте", category: "Акрил, паста", price: "3500 ₽", image: "public/images/namaste.jpg", size: "30x40", likes: 16 },
-        { id: 6, title: "Сны", category: "Акрил, паста", price: "3500 ₽", image: "public/images/dreams.jpg", size: "40x50", likes: 27 },
-        { id: 7, title: "Цветущий Будда", category: "Акрил, паста", price: "6500 ₽", image: "public/images/6.jpg", size: "70x90", likes: 10 }
+        { id: 1, title: "Ом", category: "Акрил, паста", price: "4500 ₽", image: "public/images/1.jpg", size: "40x50", likes: 12 },
+        { id: 2, title: "Мандала", category: "Акрил, паста", price: "4500 ₽", image: "public/images/2.jpg", size: "30x40", likes: 21 },
+        { id: 3, title: "Сквозь свет", category: "Акрил, паста", price: "4500 ₽", image: "public/images/3.jpg", size: "40x50", likes: 15 },
+        { id: 4, title: "Осень", category: "Акрил, паста", price: "5500 ₽", image: "public/images/4.jpg", size: "40x50", likes: 19 },
+        { id: 5, title: "Намасте", category: "Акрил, паста", price: "3500 ₽", image: "public/images/namaste.jpg", size: "50x50", likes: 16 },
+        { id: 6, title: "Сны", category: "Акрил, паста", price: "3500 ₽", image: "public/images/dreams.jpg", size: "40x40", likes: 27 },
+        { id: 7, title: "Стена храма", category: "Акрил, паста", price: "3500 ₽", image: "public/images/temple.jpg", size: "38x48", likes: 20 },
+        { id: 8, title: "Цветущий Будда", category: "Акрил, паста", price: "6500 ₽", image: "public/images/6.jpg", size: "29x59", likes: 10 }
     ];
 
     const lowerPaintings = [
-        { id: 8, title: "Воздух", category: "Акрил, паста", price: "3500 ₽", image: "public/images/7.jpg", size: "40x40", likes: 8 },
-        { id: 9, title: "Прилив", category: "Акрил, паста", price: "3500 ₽", image: "public/images/8.jpg", size: "50x50", likes: 9 },
-        { id: 10, title: "Мечты о море", category: "Акрил, паста", price: "7000 ₽", image: "public/images/9.jpg", size: "80x100", likes: 11 },
-        { id: 11, title: "Горный мираж", category: "Акрил, паста", price: "7000 ₽", image: "public/images/10.jpg", size: "70x90", likes: 30 },
-        { id: 12, title: "Океан", category: "Акрил, паста", price: "5500 ₽", image: "public/images/11.jpg", size: "60x80", likes: 20 },
-        { id: 13, title: "Грация", category: "Акрил, паста", price: "4000 ₽", image: "public/images/12.jpg", size: "40x60", likes: 4 },
-        { id: 14, title: "Хлопок", category: "Акрил, паста", price: "3000 ₽", image: "public/images/13.jpg", size: "30x30", likes: 14 }
+        { id: 9, title: "Воздух", category: "Акрил, паста", price: "3500 ₽", image: "public/images/7.jpg", size: "40x50", likes: 8 },
+        { id: 10, title: "Прилив", category: "Акрил, паста", price: "3500 ₽", image: "public/images/8.jpg", size: "30x40", likes: 9 },
+        { id: 11, title: "Мечты о море", category: "Акрил, паста", price: "7000 ₽", image: "public/images/9.jpg", size: "60x80", likes: 11 },
+        { id: 12, title: "Горный мираж", category: "Акрил, паста", price: "7000 ₽", image: "public/images/10.jpg", size: "60x80", likes: 30 },
+        { id: 13, title: "Океан", category: "Акрил, паста", price: "5500 ₽", image: "public/images/11.jpg", size: "40x70", likes: 20 },
+        { id: 14, title: "Грация", category: "Акрил, паста", price: "4000 ₽", image: "public/images/12.jpg", size: "40x50", likes: 4 },
+        { id: 15, title: "Хлопок", category: "Акрил, паста", price: "3000 ₽", image: "public/images/13.jpg", size: "30x40", likes: 14 }
     ];
 
     // --- Логика верхнего баннера ---
-   // --- Логика верхнего баннера ---
-    // --- Логика верхнего баннера ---
-let currentSlide = 0;
-// ИСПРАВЛЕНО: селектор изменен с '.hero-slide' на '.slide'
+  let currentSlide = 0;
 const slides = document.querySelectorAll('.slide'); 
 const dots = document.querySelectorAll('.dot'); 
 let bannerInterval;
@@ -32,7 +30,6 @@ let bannerInterval;
 function showSlide(index) {
     if (slides.length === 0) return;
 
-    // Убираем активный класс у всех слайдов и точек
     slides.forEach(slide => slide.classList.remove('active'));
     dots.forEach(dot => dot.classList.remove('active'));
 
