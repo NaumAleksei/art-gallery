@@ -1025,21 +1025,26 @@ header {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Три равные колонки */
-    gap: 30px;
+    /* 3 колонки одинаковой ширины */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; /* Отступ между карточками */
+    padding: 20px 0;
 }
 
 .service-card {
-    background: #fff;
-    border: 1px solid #eee;
-    transition: var(--transition);
+ background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
     display: flex;
     flex-direction: column;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 .service-image {
@@ -1060,10 +1065,28 @@ header {
 }
 
 .service-info {
-    padding: 30px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    padding: 25px;
+    justify-content: space-between;
+}
+
+.service-info p {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.service-card:hover .service-info p {
+    opacity: 1;
+}
+
+.book-btn {
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.service-card:hover .book-btn {
+    transform: scale(1.05);
 }
 
 .service-price {
