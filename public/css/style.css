@@ -1272,14 +1272,15 @@ header {
     gap: 30px;
     padding: 20px 0;
     will-change: transform; /* Оставляем для оптимизации */
-    /* transition: 0.8s ... <--- УДАЛИТЕ ОТСЮДА, если есть */
-}
+    }
+
 .carousel-nav {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
     margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .nav-btn {
@@ -1420,4 +1421,11 @@ header {
         padding: 5px;
     }
 
+}
+
+.catalog-section {
+    padding: 80px 0;    /* Внутренние отступы сверху и снизу */
+    margin-bottom: 40px; /* Внешний отступ до следующего блока (контактов) */
+    display: block;
+    clear: both;
 }
