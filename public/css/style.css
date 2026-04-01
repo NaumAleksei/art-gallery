@@ -1081,10 +1081,6 @@ header {
     opacity: 1;
 }
 
-.book-btn {
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
 .service-card:hover .book-btn {
     transform: scale(1.05);
 }
@@ -1096,6 +1092,8 @@ header {
     color: var(--text-muted);
     margin-bottom: 10px;
     text-transform: uppercase;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
 }
 
 .service-info h3 {
@@ -1119,17 +1117,21 @@ header {
     background: transparent;
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
-    text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center;
 }
 
 .book-btn:hover {
     background: var(--accent-color);
     color: #fff;
+    text-decoration: none;
 }
 
 /* Адаптация */
