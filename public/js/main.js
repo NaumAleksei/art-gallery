@@ -104,6 +104,58 @@ document.querySelectorAll('.booking-btn').forEach(btn => {
             }
         });
 
+        // --- Логика модального окна для бесплатного урока ---
+    const lessonModal = document.getElementById('lesson-modal');
+    const openLessonBtn = document.getElementById('open-lesson-modal');
+    const closeLessonBtn = document.querySelector('.close-modal');
+    const leadForm = document.getElementById('lead-form');
+
+    if (openLessonBtn && lessonModal) {
+        // Открытие окна
+        openLessonBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            lessonModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Запрещаем прокрутку фона
+        });
+
+        // Закрытие по крестику
+        closeLessonBtn?.addEventListener('click', () => {
+            lessonModal.style.display = 'none';
+            document.body.style.overflow = ''; // Возвращаем прокрутку
+        });
+
+        // Закрытие при клике на темный фон
+        lessonModal.addEventListener('click', (e) => {
+            if (e.target === lessonModal) {
+                lessonModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Обработка отправки формы
+        leadForm?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Здесь можно добавить сбор данных:
+            const formData = {
+                name: leadForm.querySelector('input[type="text"]').value,
+                email: leadForm.querySelector('input[type="email"]').value,
+                phone: leadForm.querySelector('input[type="tel"]').value
+            };
+            
+            console.log('Данные собраны:', formData);
+            
+            alert('Спасибо! Ссылка на урок и PDF-гайд отправлены на вашу почту.');
+            
+            // Автоматическое скачивание PDF (если файл лежит в папке проекта)
+            // window.location.href = 'public/files/mini-lesson.pdf'; 
+            
+            lessonModal.style.display = 'none';
+            document.body.style.overflow = '';
+            leadForm.reset();
+        });
+    }
+
         // Закрываем меню при клике на любую ссылку внутри него
         mainNav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
