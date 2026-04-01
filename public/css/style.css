@@ -1425,7 +1425,7 @@ header {
 
 .catalog-section {
     padding: 0;    /* Внутренние отступы сверху и снизу */
-    margin-bottom: 30px; /* Внешний отступ до следующего блока (контактов) */
+    margin-bottom: 100px; /* Внешний отступ до следующего блока (контактов) */
     display: block;
     clear: both;
 }
