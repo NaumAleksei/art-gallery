@@ -1546,3 +1546,76 @@ header {
         padding: 25px;
     }
 }
+/* Основной контейнер для плавающих кнопок */
+.floating-contacts {
+    position: fixed; /* Фиксирует блок относительно окна браузера */
+    top: 50%; /* Центрирует по вертикали */
+    right: 20px; /* Отступ от правого края */
+    transform: translateY(-50%); /* Точная центровка по вертикали */
+    display: flex;
+    flex-direction: column; /* Кнопки в столбик */
+    gap: 15px; /* Расстояние между кнопками */
+    z-index: 1000; /* Поверх всех элементов сайта */
+}
+
+/* Общие стили для кружочков */
+.contact-bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Размер кружочка */
+    height: 50px;
+    border-radius: 50%; /* Делает круглым */
+    background-color: #fff; /* Фон по умолчанию */
+    color: #333; /* Цвет иконки по умолчанию */
+    font-size: 1.4rem; /* Размер иконки */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Легкая тень */
+    transition: all 0.3s ease; /* Плавная анимация для всего */
+    text-decoration: none; /* Убирает подчеркивание ссылки */
+}
+
+/* Анимация при наведении: увеличение и тень */
+.contact-bubble:hover {
+    transform: scale(1.1); /* Увеличение на 10% */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25); /* Более глубокая тень */
+}
+
+/* Фирменные цвета при наведении */
+
+/* Телефон - ваш акцентный цвет (например, бежевый) */
+.contact-bubble.phone:hover {
+    background-color: var(--beige-dark); 
+    color: #fff;
+}
+
+/* Telegram - синий */
+.contact-bubble.telegram:hover {
+    background-color: #0088cc;
+    color: #fff;
+}
+
+/* WhatsApp - зеленый */
+.contact-bubble.whatsapp:hover {
+    background-color: #25d366;
+    color: #fff;
+}
+
+/* VK - синий */
+.contact-bubble.vk:hover {
+    background-color: #0077ff;
+    color: #fff;
+}
+
+/* Мобильная адаптация: уменьшаем размер и сдвигаем */
+@media (max-width: 768px) {
+    .floating-contacts {
+        right: 10px; /* Меньший отступ на телефонах */
+        gap: 10px;
+    }
+    
+    .contact-bubble {
+        width: 40px; /* Меньший размер кружочка */
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
