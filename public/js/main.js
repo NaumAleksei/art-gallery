@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Данные для картин
+    // 1. ДАННЫЕ ДЛЯ КАРТИН
     const upperPaintings = [
         { id: 1, title: "Ом", category: "Акрил, паста", price: "4500 ₽", image: "public/images/1.jpg", size: "40x50", likes: 12 },
         { id: 2, title: "Мандала", category: "Акрил, паста", price: "4500 ₽", image: "public/images/2.jpg", size: "30x40", likes: 21 },
@@ -21,57 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 15, title: "Хлопок", category: "Акрил, паста", price: "3000 ₽", image: "public/images/13.jpg", size: "30x40", likes: 14 }
     ];
 
-    // --- Логика верхнего баннера ---
-  let currentSlide = 0;
-const slides = document.querySelectorAll('.slide'); 
-const dots = document.querySelectorAll('.dot'); 
-let bannerInterval;
-
-function showSlide(index) {
-    if (slides.length === 0) return;
-
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-
-    // Вычисляем индекс (с закольцовкой)
-    currentSlide = (index + slides.length) % slides.length;
-
-    // Добавляем активный класс текущим элементам
-    slides[currentSlide].classList.add('active');
-    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-}
-
-// Функция для запуска/сброса таймера
-function startAutoPlay() {
-    clearInterval(bannerInterval);
-    bannerInterval = setInterval(() => {
-        showSlide(currentSlide + 1);
-    }, 3000);
-}
-
-// Обработка кликов по точкам
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        showSlide(index);
-        startAutoPlay(); // Сбрасываем таймер при ручном переключении
-    });
-});
-
-// Инициализация
-if (slides.length > 0) {
-    showSlide(0);
-    startAutoPlay();
-}
-// Обработка кнопок мастер-классов
-document.querySelectorAll('.booking-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const msg = encodeURIComponent("Здравствуйте! Хочу записаться на мастер-класс.");
-        window.open(`https://t.me/Mari_naumova_art?text=${msg}`, '_blank');
-    });
-});
-
-    // Элементы DOM
+    // 2. ЭЛЕМЕНТЫ DOM
     const track1 = document.getElementById('track-1');
     const track2 = document.getElementById('track-2');
     const cartCountBadge = document.querySelector('.cart-count');
@@ -82,110 +32,117 @@ document.querySelectorAll('.booking-btn').forEach(btn => {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxCaption = document.getElementById('lightbox-caption');
-
-    let cart = JSON.parse(localStorage.getItem('cartData')) || [];
-
     const menuToggle = document.getElementById('mobile-menu');
     const mainNav = document.getElementById('main-nav');
 
+    // 3. ЛОГИКА ВЕРХНЕГО БАННЕРА
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let bannerInterval;
+
+    function showSlide(index) {
+        if (slides.length === 0) return;
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
+
+    function startAutoPlay() {
+        clearInterval(bannerInterval);
+        bannerInterval = setInterval(() => showSlide(currentSlide + 1), 3000);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            startAutoPlay();
+        });
+    });
+
+    if (slides.length > 0) {
+        showSlide(0);
+        startAutoPlay();
+    }
+
+    // 4. МОБИЛЬНОЕ МЕНЮ
     if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', () => {
-            // Переключаем класс active у меню
             mainNav.classList.toggle('active');
-            
-            // Меняем иконку с "барс" на "крестик" (если используете FontAwesome)
             const icon = menuToggle.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
             }
         });
 
-        // --- Логика модального окна для бесплатного урока ---
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+    }
+
+    // 5. МОДАЛЬНОЕ ОКНО: БЕСПЛАТНЫЙ УРОК
     const lessonModal = document.getElementById('lesson-modal');
     const openLessonBtn = document.getElementById('open-lesson-modal');
-    const closeLessonBtn = document.querySelector('.close-modal');
+    const closeLessonBtn = lessonModal?.querySelector('.close-modal'); // Ищем внутри окна
     const leadForm = document.getElementById('lead-form');
 
     if (openLessonBtn && lessonModal) {
-        // Открытие окна
         openLessonBtn.addEventListener('click', (e) => {
             e.preventDefault();
             lessonModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Запрещаем прокрутку фона
+            document.body.style.overflow = 'hidden';
         });
 
-        // Закрытие по крестику
         closeLessonBtn?.addEventListener('click', () => {
             lessonModal.style.display = 'none';
-            document.body.style.overflow = ''; // Возвращаем прокрутку
+            document.body.style.overflow = '';
         });
 
-        // Закрытие при клике на темный фон
         lessonModal.addEventListener('click', (e) => {
             if (e.target === lessonModal) {
                 lessonModal.style.display = 'none';
                 document.body.style.overflow = '';
             }
         });
+    }
 
-        // Обработка отправки формы
-        leadForm?.addEventListener('submit', (e) => {
+    if (leadForm) {
+        leadForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // Здесь можно добавить сбор данных:
-            const formData = {
-                name: leadForm.querySelector('input[type="text"]').value,
-                email: leadForm.querySelector('input[type="email"]').value,
-                phone: leadForm.querySelector('input[type="tel"]').value
-            };
-            
-            console.log('Данные собраны:', formData);
-            
             alert('Спасибо! Ссылка на урок и PDF-гайд отправлены на вашу почту.');
-            
-            // Автоматическое скачивание PDF (если файл лежит в папке проекта)
-            // window.location.href = 'public/files/mini-lesson.pdf'; 
-            
             lessonModal.style.display = 'none';
             document.body.style.overflow = '';
             leadForm.reset();
         });
     }
 
-        // Закрываем меню при клике на любую ссылку внутри него
-        mainNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-
-const serviceModal = document.getElementById('service-modal');
+    // 6. МОДАЛЬНОЕ ОКНО: ПОДРОБНЕЕ О МАСТЕР-КЛАССЕ
+    const serviceModal = document.getElementById('service-modal');
     const closeService = document.getElementById('close-service');
 
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('open-service-modal')) {
             const card = e.target.closest('.service-card');
-            
-            // Собираем данные из верстки карточки
             const title = card.querySelector('h3').innerText;
             const price = card.querySelector('.service-price').innerText;
             const desc = card.querySelector('p').innerHTML;
             const imgSrc = card.querySelector('img').src;
 
-            // Подставляем в модалку
             document.getElementById('service-popup-title').innerText = title;
             document.getElementById('service-popup-price').innerText = price;
             document.getElementById('service-popup-desc').innerHTML = desc;
             document.getElementById('service-popup-img').src = imgSrc;
 
-            // Настраиваем ссылку на ТГ с контекстом
             const message = encodeURIComponent(`Здравствуйте! Хочу уточнить детали по мастер-классу "${title}" (${price}).`);
             document.getElementById('service-tg-link').href = `https://t.me/Mari_naumova_art?text=${message}`;
 
@@ -194,73 +151,69 @@ const serviceModal = document.getElementById('service-modal');
         }
     });
 
-    // Закрытие по крестику или клику в пустоту
     closeService?.addEventListener('click', () => {
         serviceModal.style.display = 'none';
         document.body.style.overflow = '';
     });
 
-    window.addEventListener('click', (e) => {
-        if (e.target === serviceModal) {
-            serviceModal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
-    });
-
+    // 7. МОДАЛЬНОЕ ОКНО: ОБРАТНЫЙ ЗВОНОК (FLOATING CONTACTS)
     const callbackModal = document.getElementById('callback-modal');
     const openCallback = document.getElementById('open-callback');
     const closeCallback = document.getElementById('close-callback');
     const callbackForm = document.getElementById('callback-form');
 
-    // Настройки Telegram (ЗАМЕНИТЕ НА СВОИ)
-    const TELEGRAM_BOT_TOKEN = 'ВАШ_ТОКЕН_ТУТ';
-    const TELEGRAM_CHAT_ID = 'ВАШ_CHAT_ID_ТУТ';
+    if (openCallback && callbackModal) {
+        openCallback.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            callbackModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
 
-    // Открытие/Закрытие
-    openCallback?.addEventListener('click', () => {
-        callbackModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    });
+        closeCallback?.addEventListener('click', () => {
+            callbackModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
 
-    closeCallback?.addEventListener('click', () => {
-        callbackModal.style.display = 'none';
-        document.body.style.overflow = '';
-    });
-
-    // Обработка формы
-    callbackForm?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('callback-name').value;
-        const phone = document.getElementById('callback-phone').value;
-        const text = `📞 Заявка на звонок!\nИмя: ${name}\nТелефон: ${phone}`;
-
-        try {
-            const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: TELEGRAM_CHAT_ID,
-                    text: text
-                })
-            });
-
-            if (response.ok) {
-                alert('Заявка отправлена! Я свяжусь с вами в ближайшее время.');
-                callbackForm.reset();
+        callbackModal.addEventListener('click', (e) => {
+            if (e.target === callbackModal) {
                 callbackModal.style.display = 'none';
                 document.body.style.overflow = '';
-            } else {
-                throw new Error();
             }
-        } catch (error) {
-            alert('Произошла ошибка. Пожалуйста, напишите нам в Telegram напрямую.');
-        }
-    });
-});
+        });
+    }
 
+    if (callbackForm) {
+        callbackForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const TELEGRAM_BOT_TOKEN = 'ВАШ_ТОКЕН_ТУТ';
+            const TELEGRAM_CHAT_ID = 'ВАШ_CHAT_ID_ТУТ';
+            
+            const name = document.getElementById('callback-name').value;
+            const phone = document.getElementById('callback-phone').value;
+            const text = `📞 Заявка на звонок!\nИмя: ${name}\nТелефон: ${phone}`;
 
-    // 2. Функция генерации карточки
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: text })
+                });
+
+                if (response.ok) {
+                    alert('Заявка отправлена! Свяжусь с вами в ближайшее время.');
+                    callbackForm.reset();
+                    callbackModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                } else { throw new Error(); }
+            } catch (error) {
+                alert('Произошла ошибка. Напишите нам в Telegram напрямую.');
+            }
+        });
+    }
+
+    // 8. ГЕНЕРАЦИЯ КАРТОЧЕК И КАРУСЕЛЬ
     function createCardHTML(p) {
         return `
             <div class="art-card">
@@ -285,67 +238,43 @@ const serviceModal = document.getElementById('service-modal');
         `;
     }
 
-    // Рендер
     if (track1) track1.innerHTML = [...upperPaintings, ...upperPaintings].map(createCardHTML).join('');
     if (track2) track2.innerHTML = [...lowerPaintings, ...lowerPaintings].map(createCardHTML).join('');
 
-    // 3. Единая логика карусели
-  function setupCarousel(track) {
-    if (!track) return;
-    
-    let scrollAmount = 0;
-    let isPaused = false;
-    let speed = 0.5; // Скорость автопрокрутки
+    function setupCarousel(track) {
+        if (!track) return;
+        let scrollAmount = 0;
+        let isPaused = false;
+        let speed = 0.5;
 
-    function animate() {
-        if (!isPaused) {
-            scrollAmount -= speed;
-            
-            const halfWidth = track.scrollWidth / 2;
-            // Плавный перезапуск цикла
-            if (Math.abs(scrollAmount) >= halfWidth) {
-                scrollAmount = 0;
+        function animate() {
+            if (!isPaused) {
+                scrollAmount -= speed;
+                const halfWidth = track.scrollWidth / 2;
+                if (Math.abs(scrollAmount) >= halfWidth) scrollAmount = 0;
+                track.style.transform = `translateX(${scrollAmount}px)`;
             }
-            
-            track.style.transition = 'none'; // Важно: для автопрокрутки transition не нужен
-            track.style.transform = `translateX(${scrollAmount}px)`;
+            requestAnimationFrame(animate);
         }
-        requestAnimationFrame(animate);
+        window.addEventListener('load', animate);
+        track.addEventListener('mouseenter', () => isPaused = true);
+        track.addEventListener('mouseleave', () => isPaused = false);
+
+        return {
+            move: (dir) => { 
+                const card = track.querySelector('.art-card');
+                const cardWidth = card ? card.offsetWidth + 30 : 380;
+                isPaused = true;
+                track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+                scrollAmount += (dir * cardWidth);
+                track.style.transform = `translateX(${scrollAmount}px)`;
+                setTimeout(() => {
+                    track.style.transition = 'none';
+                    isPaused = false;
+                }, 600);
+            }
+        };
     }
-
-    // Запуск после загрузки контента
-    window.addEventListener('load', animate);
-
-    // Пауза при наведении
-    track.addEventListener('mouseenter', () => isPaused = true);
-    track.addEventListener('mouseleave', () => isPaused = false);
-
-    return {
-        move: (dir) => { 
-            const card = track.querySelector('.art-card');
-            const style = window.getComputedStyle(card);
-            const marginRight = parseInt(style.marginRight) || 0;
-            const cardWidth = card ? card.offsetWidth + marginRight : 380;
-            
-            // 1. Временно ставим паузу, чтобы анимация не перебивала прыжок
-            isPaused = true;
-            
-            // 2. Включаем плавность только на время перемещения
-            track.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-            
-            // 3. Обновляем общую переменную положения
-            scrollAmount += (dir * cardWidth);
-            
-            // 4. Применяем сдвиг
-            track.style.transform = `translateX(${scrollAmount}px)`;
-            
-            // 5. После окончания анимации (0.6с) снимаем паузу
-            setTimeout(() => {
-                isPaused = false;
-            }, 600);
-        }
-    };
-}
 
     const control1 = setupCarousel(track1);
     const control2 = setupCarousel(track2);
@@ -355,7 +284,9 @@ const serviceModal = document.getElementById('service-modal');
     window.scrollPrev2 = () => control2?.move(1);
     window.scrollNext2 = () => control2?.move(-1);
 
-    // 4. Корзина и остальные функции (оставляем без изменений)
+    // 9. КОРЗИНА И ЛАЙКИ
+    let cart = JSON.parse(localStorage.getItem('cartData')) || [];
+
     const updateCartUI = () => {
         localStorage.setItem('cartData', JSON.stringify(cart));
         if (cartCountBadge) cartCountBadge.innerText = cart.length;
@@ -391,12 +322,12 @@ const serviceModal = document.getElementById('service-modal');
     };
 
     document.addEventListener('click', (e) => {
+        // Добавление в корзину
         const addBtn = e.target.closest('.add-to-cart-btn');
         if (addBtn) {
             const card = addBtn.closest('.art-card');
             const title = card.querySelector('h3').innerText;
-            const allPaintings = [...upperPaintings, ...lowerPaintings];
-            const artData = allPaintings.find(p => p.title === title);
+            const artData = [...upperPaintings, ...lowerPaintings].find(p => p.title === title);
             if (artData) {
                 cart.push(artData);
                 updateCartUI();
@@ -405,13 +336,7 @@ const serviceModal = document.getElementById('service-modal');
             }
         }
 
-        if (e.target.tagName === 'IMG' && e.target.closest('.art-image')) {
-            lightboxImg.src = e.target.src;
-            lightboxCaption.innerText = e.target.alt;
-            lightbox.style.display = 'flex';
-            setTimeout(() => lightbox.classList.add('active'), 10);
-        }
-
+        // Лайки
         const likeBtn = e.target.closest('.like-btn');
         if (likeBtn) {
             const icon = likeBtn.querySelector('i');
@@ -427,8 +352,17 @@ const serviceModal = document.getElementById('service-modal');
                 countSpan.innerText = likes - 1;
             }
         }
+
+        // Лайтбокс
+        if (e.target.tagName === 'IMG' && e.target.closest('.art-image')) {
+            lightboxImg.src = e.target.src;
+            lightboxCaption.innerText = e.target.alt;
+            lightbox.style.display = 'flex';
+            setTimeout(() => lightbox.classList.add('active'), 10);
+        }
     });
 
+    // Управление корзиной (Drawer)
     document.querySelector('.cart-icon')?.addEventListener('click', (e) => {
         e.preventDefault();
         cartDrawer.classList.add('open');
@@ -440,11 +374,13 @@ const serviceModal = document.getElementById('service-modal');
         cartOverlay?.classList.remove('open');
     });
 
+    // Лайтбокс закрытие
     lightbox?.addEventListener('click', () => {
         lightbox.classList.remove('active');
         setTimeout(() => lightbox.style.display = 'none', 300);
     });
 
+    // Копирование email
     document.querySelector('.copy-email')?.addEventListener('click', function(e) {
         e.preventDefault();
         const email = this.getAttribute('data-email');
@@ -456,11 +392,12 @@ const serviceModal = document.getElementById('service-modal');
         });
     });
 
+    // Оформление заказа
     document.getElementById('checkout-btn')?.addEventListener('click', () => {
         if (cart.length === 0) return alert("Корзина пуста");
         const itemList = cart.map(item => `- "${item.title}" (${item.price})`).join('%0A');
         const total = cart.reduce((sum, item) => sum + parseInt(item.price.replace(/\s/g, '')), 0);
-        const message = `Здравствуйте! Хочу заказать картины:%0A${itemList}%0A%0AИтого: ${total.toLocaleString()} ₽`;
+        const message = encodeURIComponent(`Здравствуйте! Хочу заказать картины:\n${cart.map(i => i.title).join(', ')}\nИтого: ${total} ₽`);
         window.open(`https://t.me/Mari_naumova_art?text=${message}`, '_blank');
     });
 
