@@ -207,7 +207,6 @@ const serviceModal = document.getElementById('service-modal');
         }
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
     const callbackModal = document.getElementById('callback-modal');
     const openCallback = document.getElementById('open-callback');
     const closeCallback = document.getElementById('close-callback');
@@ -260,7 +259,6 @@ const serviceModal = document.getElementById('service-modal');
     });
 });
 
-    }
 
     // 2. Функция генерации карточки
     function createCardHTML(p) {

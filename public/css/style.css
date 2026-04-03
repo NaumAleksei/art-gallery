@@ -1572,6 +1572,7 @@ header {
     box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Легкая тень */
     transition: all 0.3s ease; /* Плавная анимация для всего */
     text-decoration: none; /* Убирает подчеркивание ссылки */
+    border: none; /* Убираем любые обводки */
 }
 
 /* Анимация при наведении: увеличение и тень */
@@ -1584,9 +1585,9 @@ header {
 
 /* Телефон - ваш акцентный цвет (например, бежевый) */
 .contact-bubble.phone:hover {
-    background-color: var(--beige-dark) !important; /* Фон становится темным/бежевым */
-    color: #ffffff !important; /* Трубка становится белой */
     transform: scale(1.1);
+    background-color: #333 !important; /* Темный фон при наведении */
+    color: #fff !important;
 }
 
 /* Telegram - синий */
