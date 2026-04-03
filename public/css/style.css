@@ -1546,16 +1546,17 @@ header {
         padding: 25px;
     }
 }
-/* Основной контейнер для плавающих кнопок */
+/* --- ПЛАВАЮЩИЕ КОНТАКТЫ (ИСПРАВЛЕНО) --- */
+
 .floating-contacts {
-    position: fixed; /* Фиксирует блок относительно окна браузера */
-    top: 50%; /* Центрирует по вертикали */
-    right: 20px; /* Отступ от правого края */
-    transform: translateY(-50%); /* Точная центровка по вертикали */
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
     display: flex;
-    flex-direction: column; /* Кнопки в столбик */
-    gap: 15px; /* Расстояние между кнопками */
-    z-index: 1000; /* Поверх всех элементов сайта */
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999; /* Подняли слой выше всех */
 }
 
 /* Общие стили для кружочков */
@@ -1563,69 +1564,74 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px; /* Размер кружочка */
+    width: 50px;
     height: 50px;
-    border-radius: 50%; /* Делает круглым */
-    background-color: #fff; /* Фон по умолчанию */
-    color: #333; /* Цвет иконки по умолчанию */
-    font-size: 1.4rem; /* Размер иконки */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Легкая тень */
-    transition: all 0.3s ease; /* Плавная анимация для всего */
-    text-decoration: none; /* Убирает подчеркивание ссылки */
-    border: none; /* Убираем любые обводки */
+    border-radius: 50%;
+    background-color: #fff;
+    color: #333;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    
+    /* СБРОС СТИЛЕЙ КНОПКИ (Критично для <button>) */
+    border: none !important;    /* Убираем рамку */
+    outline: none !important;   /* Убираем синий контур при клике */
+    padding: 0;                 /* Убираем внутренние отступы */
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
-/* Анимация при наведении: увеличение и тень */
+/* Эффект при наведении (общий) */
 .contact-bubble:hover {
-    transform: scale(1.1); /* Увеличение на 10% */
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25); /* Более глубокая тень */
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
-/* Фирменные цвета при наведении */
-
-/* Телефон - ваш акцентный цвет (например, бежевый) */
+/* ТЕЛЕФОН: Инверсия (Черный фон, белая трубка) */
 .contact-bubble.phone:hover {
-    transform: scale(1.1);
-    background-color: #333 !important; /* Темный фон при наведении */
+    background-color: #333 !important;
+}
+
+.contact-bubble.phone:hover i {
+    color: #fff !important; /* Гарантируем белый цвет иконки */
+}
+
+/* TELEGRAM: Синий */
+.contact-bubble.telegram:hover {
+    background-color: #0088cc !important;
     color: #fff !important;
 }
 
-/* Telegram - синий */
-.contact-bubble.telegram:hover {
-    background-color: #0088cc;
-    color: #fff;
-}
-
-/* WhatsApp - зеленый */
+/* WHATSAPP: Зеленый */
 .contact-bubble.whatsapp:hover {
-    background-color: #25d366;
-    color: #fff;
+    background-color: #25d366 !important;
+    color: #fff !important;
 }
 
-/* VK - синий */
+/* VK: Синий */
 .contact-bubble.vk:hover {
-    background-color: #0077ff;
-    color: #fff;
+    background-color: #0077ff !important;
+    color: #fff !important;
 }
 
-/* Мобильная адаптация: уменьшаем размер и сдвигаем */
-@media (max-width: 768px) {
-    .floating-contacts {
-        right: 10px; /* Меньший отступ на телефонах */
-        gap: 10px;
-    }
-    
-    .contact-bubble {
-        width: 40px; /* Меньший размер кружочка */
-        height: 40px;
-        font-size: 1.1rem;
-    }
-}
-/* Видимость в зависимости от устройства */
+/* Адаптация под мобильные устройства */
 .desktop-only { display: flex; }
 .mobile-only { display: none; }
 
 @media (max-width: 768px) {
+    .floating-contacts {
+        right: 15px;
+        gap: 12px;
+    }
+    
+    .contact-bubble {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
     .desktop-only { display: none; }
     .mobile-only { display: flex; }
 }
@@ -1634,6 +1640,7 @@ header {
 .callback-popup {
     max-width: 350px;
     padding: 30px;
+    border-radius: 15px; /* Скруглим углы для красоты */
 }
 
 #callback-form {
@@ -1647,4 +1654,5 @@ header {
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    font-family: inherit;
 }
