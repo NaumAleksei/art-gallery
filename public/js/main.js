@@ -165,6 +165,48 @@ document.querySelectorAll('.booking-btn').forEach(btn => {
                 icon.classList.add('fa-bars');
             });
         });
+
+const serviceModal = document.getElementById('service-modal');
+    const closeService = document.getElementById('close-service');
+
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('open-service-modal')) {
+            const card = e.target.closest('.service-card');
+            
+            // Собираем данные из верстки карточки
+            const title = card.querySelector('h3').innerText;
+            const price = card.querySelector('.service-price').innerText;
+            const desc = card.querySelector('p').innerHTML;
+            const imgSrc = card.querySelector('img').src;
+
+            // Подставляем в модалку
+            document.getElementById('service-popup-title').innerText = title;
+            document.getElementById('service-popup-price').innerText = price;
+            document.getElementById('service-popup-desc').innerHTML = desc;
+            document.getElementById('service-popup-img').src = imgSrc;
+
+            // Настраиваем ссылку на ТГ с контекстом
+            const message = encodeURIComponent(`Здравствуйте! Хочу уточнить детали по мастер-классу "${title}" (${price}).`);
+            document.getElementById('service-tg-link').href = `https://t.me/Mari_naumova_art?text=${message}`;
+
+            serviceModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+
+    // Закрытие по крестику или клику в пустоту
+    closeService?.addEventListener('click', () => {
+        serviceModal.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === serviceModal) {
+            serviceModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+
     }
 
     // 2. Функция генерации карточки

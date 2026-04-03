@@ -283,7 +283,7 @@ Cоздание одного изделия каждым участником. �
                     <p>Продолжительность: 2 часа
                         <br>
                        Материал: текстурная паста, акрил</p>
-                    <a href="https://t.me/Mari_naumova_art" target="_blank" class="book-btn">Забронировать</a>
+                    <button class="book-btn open-service-modal">Подробнее</button>
                 </div>
             </div>
 
@@ -418,6 +418,29 @@ Cоздание одного изделия каждым участником. �
     </div>
 </div>
 <div id="cart-overlay" class="cart-overlay"></div>
+
+<div id="service-modal" class="modal-overlay">
+    <div class="modal-content service-popup">
+        <span class="close-modal" id="close-service">&times;</span>
+        <div class="service-popup-container">
+            <div class="service-popup-image">
+                <img id="service-popup-img" src="" alt="">
+            </div>
+            <div class="service-popup-info">
+                <h2 id="service-popup-title"></h2>
+                <div class="service-popup-price" id="service-popup-price"></div>
+                <div class="service-popup-desc" id="service-popup-desc"></div>
+                
+                <div class="service-details-list">
+                    <p><strong>В стоимость входит:</strong> работа мастера, все расходные материалы, инструменты и индивидуальная упаковка изделия.</p>
+                    <p><strong>Для кого:</strong> подходит для детей от 6 лет и взрослых. Уровень подготовки — любой.</p>
+                </div>
+
+                <a href="#" id="service-tg-link" target="_blank" class="book-btn">Обсудить детали в Telegram</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
