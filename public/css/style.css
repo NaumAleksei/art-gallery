@@ -1584,8 +1584,9 @@ header {
 
 /* Телефон - ваш акцентный цвет (например, бежевый) */
 .contact-bubble.phone:hover {
-    background-color: var(--beige-dark); 
-    color: #fff;
+    background-color: var(--beige-dark) !important; /* Фон становится темным/бежевым */
+    color: #ffffff !important; /* Трубка становится белой */
+    transform: scale(1.1);
 }
 
 /* Telegram - синий */
@@ -1618,4 +1619,31 @@ header {
         height: 40px;
         font-size: 1.1rem;
     }
+}
+/* Видимость в зависимости от устройства */
+.desktop-only { display: flex; }
+.mobile-only { display: none; }
+
+@media (max-width: 768px) {
+    .desktop-only { display: none; }
+    .mobile-only { display: flex; }
+}
+
+/* Стили формы обратного звонка */
+.callback-popup {
+    max-width: 350px;
+    padding: 30px;
+}
+
+#callback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#callback-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }

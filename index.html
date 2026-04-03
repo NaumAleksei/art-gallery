@@ -37,21 +37,38 @@
 <!-- /Yandex.Metrika counter -->
 
 <div class="floating-contacts">
-    <a href="tel:+79297880571" class="contact-bubble phone" title="Позвонить нам">
+    <a href="tel:+79297880571" class="contact-bubble phone mobile-only" title="Позвонить нам">
         <i class="fas fa-phone-alt"></i>
     </a>
+
+    <button id="open-callback" class="contact-bubble phone desktop-only" title="Заказать звонок">
+        <i class="fas fa-phone-alt"></i>
+    </button>
     
-    <a href="https://t.me/+79297880571" target="_blank" rel="noopener noreferrer" class="contact-bubble telegram" title="Написать в Telegram">
+    <a href="https://t.me/Mari_naumova_art" target="_blank" class="contact-bubble telegram" title="Telegram">
         <i class="fab fa-telegram-plane"></i>
     </a>
     
-    <a href="https://wa.me/79297880571" target="_blank" rel="noopener noreferrer" class="contact-bubble whatsapp" title="Написать в WhatsApp">
+    <a href="https://wa.me/79297880571" target="_blank" class="contact-bubble whatsapp" title="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <a href="https://vk.com/club237346777" target="_blank" rel="noopener noreferrer" class="contact-bubble vk" title="Перейти в ВК сообщество">
+    <a href="https://vk.com/club237346777" target="_blank" class="contact-bubble vk" title="ВКонтакте">
         <i class="fab fa-vk"></i>
     </a>
+</div>
+
+<div id="callback-modal" class="modal-overlay">
+    <div class="modal-content callback-popup">
+        <span class="close-modal" id="close-callback">&times;</span>
+        <h3>Заказать обратный звонок</h3>
+        <p>Оставьте ваш номер, и я свяжусь с вами в ближайшее время</p>
+        <form id="callback-form">
+            <input type="text" id="callback-name" placeholder="Ваше имя" required>
+            <input type="tel" id="callback-phone" placeholder="+7 (___) ___-__-__" required>
+            <button type="submit" class="book-btn">Жду звонка</button>
+        </form>
+    </div>
 </div>
 
     <header>
