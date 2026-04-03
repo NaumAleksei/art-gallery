@@ -207,6 +207,59 @@ const serviceModal = document.getElementById('service-modal');
         }
     });
 
+    document.addEventListener('DOMContentLoaded', () => {
+    const callbackModal = document.getElementById('callback-modal');
+    const openCallback = document.getElementById('open-callback');
+    const closeCallback = document.getElementById('close-callback');
+    const callbackForm = document.getElementById('callback-form');
+
+    // Настройки Telegram (ЗАМЕНИТЕ НА СВОИ)
+    const TELEGRAM_BOT_TOKEN = 'ВАШ_ТОКЕН_ТУТ';
+    const TELEGRAM_CHAT_ID = 'ВАШ_CHAT_ID_ТУТ';
+
+    // Открытие/Закрытие
+    openCallback?.addEventListener('click', () => {
+        callbackModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeCallback?.addEventListener('click', () => {
+        callbackModal.style.display = 'none';
+        document.body.style.overflow = '';
+    });
+
+    // Обработка формы
+    callbackForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('callback-name').value;
+        const phone = document.getElementById('callback-phone').value;
+        const text = `📞 Заявка на звонок!\nИмя: ${name}\nТелефон: ${phone}`;
+
+        try {
+            const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: text
+                })
+            });
+
+            if (response.ok) {
+                alert('Заявка отправлена! Я свяжусь с вами в ближайшее время.');
+                callbackForm.reset();
+                callbackModal.style.display = 'none';
+                document.body.style.overflow = '';
+            } else {
+                throw new Error();
+            }
+        } catch (error) {
+            alert('Произошла ошибка. Пожалуйста, напишите нам в Telegram напрямую.');
+        }
+    });
+});
+
     }
 
     // 2. Функция генерации карточки
