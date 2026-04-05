@@ -35,7 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('mobile-menu');
     const mainNav = document.getElementById('main-nav');
 
-    // 3. ЛОГИКА ВЕРХНЕГО БАННЕРА
+    // 3. УНИВЕРСАЛЬНАЯ ФУНКЦИЯ ОТПРАВКИ (БЕЗОПАСНАЯ)
+    // Работает через Vercel Serverless Function в папке /api/send-message.js
+    async function sendToTelegram(data) {
+        try {
+            const response = await fetch('/api/send-message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            return response.ok;
+        } catch (error) {
+            console.error('Ошибка при отправке:', error);
+            return false;
+        }
+    }
+
+    // 4. ЛОГИКА ВЕРХНЕГО БАННЕРА
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
@@ -67,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoPlay();
     }
 
-    // 4. МОБИЛЬНОЕ МЕНЮ
+    // 5. МОБИЛЬНОЕ МЕНЮ
     if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('active');
@@ -90,10 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. МОДАЛЬНОЕ ОКНО: БЕСПЛАТНЫЙ УРОК
+    // 6. МОДАЛЬНОЕ ОКНО: БЕСПЛАТНЫЙ УРОК (ЛИД-МАГНИТ)
     const lessonModal = document.getElementById('lesson-modal');
     const openLessonBtn = document.getElementById('open-lesson-modal');
-    const closeLessonBtn = lessonModal?.querySelector('.close-modal'); // Ищем внутри окна
+    const closeLessonBtn = lessonModal?.querySelector('.close-modal');
     const leadForm = document.getElementById('lead-form');
 
     if (openLessonBtn && lessonModal) {
@@ -117,16 +133,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (leadForm) {
-        leadForm.addEventListener('submit', (e) => {
+        leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            alert('Спасибо! Ссылка на урок и PDF-гайд отправлены на вашу почту.');
-            lessonModal.style.display = 'none';
-            document.body.style.overflow = '';
-            leadForm.reset();
+
+            const data = {
+                name: leadForm.querySelector('input[type="text"]').value,
+                phone: leadForm.querySelector('input[type="tel"]').value,
+                email: leadForm.querySelector('input[type="email"]')?.value || 'Не указан',
+                type: '🎁 Лид-магнит (Урок + PDF)'
+            };
+
+            const success = await sendToTelegram(data);
+
+            if (success) {
+                // Открываем видео
+                window.open('https://vkvideo.ru/video-237346777_456239022?list=ln-tHWeNXQnu8AGNTEPzw', '_blank');
+                
+                // Скачиваем PDF
+                const link = document.createElement('a');
+                link.href = 'public/files/guide.pdf';
+                link.download = 'Подарок_от_MarinaArt.pdf';
+                link.click();
+
+                alert('Спасибо! Урок открыт в новой вкладке, а гайд уже скачивается.');
+                
+                lessonModal.style.display = 'none';
+                document.body.style.overflow = '';
+                leadForm.reset();
+            } else {
+                alert('Произошла ошибка при отправке. Пожалуйста, напишите нам в Telegram напрямую.');
+            }
         });
     }
 
-    // 6. МОДАЛЬНОЕ ОКНО: ПОДРОБНЕЕ О МАСТЕР-КЛАССЕ
+    // 7. МОДАЛЬНОЕ ОКНО: ПОДРОБНЕЕ О МАСТЕР-КЛАССЕ
     const serviceModal = document.getElementById('service-modal');
     const closeService = document.getElementById('close-service');
 
@@ -156,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     });
 
-    // 7. МОДАЛЬНОЕ ОКНО: ОБРАТНЫЙ ЗВОНОК (FLOATING CONTACTS)
+    // 8. МОДАЛЬНОЕ ОКНО: ОБРАТНЫЙ ЗВОНОК
     const callbackModal = document.getElementById('callback-modal');
     const openCallback = document.getElementById('open-callback');
     const closeCallback = document.getElementById('close-callback');
@@ -187,33 +227,26 @@ document.addEventListener('DOMContentLoaded', () => {
         callbackForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const TELEGRAM_BOT_TOKEN = 'ВАШ_ТОКЕН_ТУТ';
-            const TELEGRAM_CHAT_ID = 'ВАШ_CHAT_ID_ТУТ';
-            
-            const name = document.getElementById('callback-name').value;
-            const phone = document.getElementById('callback-phone').value;
-            const text = `📞 Заявка на звонок!\nИмя: ${name}\nТелефон: ${phone}`;
+            const data = {
+                name: document.getElementById('callback-name').value,
+                phone: document.getElementById('callback-phone').value,
+                type: '📞 Запрос обратного звонка'
+            };
 
-            try {
-                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: text })
-                });
+            const success = await sendToTelegram(data);
 
-                if (response.ok) {
-                    alert('Заявка отправлена! Свяжусь с вами в ближайшее время.');
-                    callbackForm.reset();
-                    callbackModal.style.display = 'none';
-                    document.body.style.overflow = '';
-                } else { throw new Error(); }
-            } catch (error) {
+            if (success) {
+                alert('Заявка отправлена! Свяжусь с вами в ближайшее время.');
+                callbackForm.reset();
+                callbackModal.style.display = 'none';
+                document.body.style.overflow = '';
+            } else {
                 alert('Произошла ошибка. Напишите нам в Telegram напрямую.');
             }
         });
     }
 
-    // 8. ГЕНЕРАЦИЯ КАРТОЧЕК И КАРУСЕЛЬ
+    // 9. ГЕНЕРАЦИЯ КАРТОЧЕК И КАРУСЕЛЬ
     function createCardHTML(p) {
         return `
             <div class="art-card">
@@ -284,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollPrev2 = () => control2?.move(1);
     window.scrollNext2 = () => control2?.move(-1);
 
-    // 9. КОРЗИНА И ЛАЙКИ
+    // 10. КОРЗИНА И ЛАЙКИ
     let cart = JSON.parse(localStorage.getItem('cartData')) || [];
 
     const updateCartUI = () => {
@@ -395,7 +428,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Оформление заказа
     document.getElementById('checkout-btn')?.addEventListener('click', () => {
         if (cart.length === 0) return alert("Корзина пуста");
-        const itemList = cart.map(item => `- "${item.title}" (${item.price})`).join('%0A');
         const total = cart.reduce((sum, item) => sum + parseInt(item.price.replace(/\s/g, '')), 0);
         const message = encodeURIComponent(`Здравствуйте! Хочу заказать картины:\n${cart.map(i => i.title).join(', ')}\nИтого: ${total} ₽`);
         window.open(`https://t.me/Mari_naumova_art?text=${message}`, '_blank');
