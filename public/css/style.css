@@ -1627,7 +1627,7 @@ header {
     }
     
     .contact-bubble {
-        opacity: 0.8;
+        opacity: 0.5;
         width: 35px;
         height: 35px;
         font-size: 1.2rem;
