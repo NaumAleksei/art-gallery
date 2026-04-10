@@ -1622,14 +1622,17 @@ header {
 
 @media (max-width: 768px) {
     .floating-contacts {
+        bottom: 20px;
         right: 10px;
         gap: 10px;
+        top: auto; 
+        transform: none;
     }
     
     .contact-bubble {
         opacity: 0.5;
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         font-size: 1.2rem;
     }
     .contact-bubble:active {
