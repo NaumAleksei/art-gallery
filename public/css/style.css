@@ -1615,17 +1615,21 @@ header {
     background-color: #0077ff !important;
     color: #fff !important;
 }
-/* Стиль для кнопки TikTok в плавающем блоке */
+/* Состояние по умолчанию: белый фон, темный значок */
 .floating-contacts .contact-bubble.tiktok {
-    background-color: #010101; /* Фирменный черный цвет TikTok */
-    color: #ffffff;            /* Белая иконка */
+    background-color: #ffffff; /* Белый фон */
+    color: #111111;            /* Темный цвет самой иконки */
+    border: 1px solid #e0e0e0; /* Легкая рамка, чтобы кнопка не сливалась с белым фоном сайта */
+    transition: all 0.3s ease; /* Плавный переход для всех свойств */
 }
 
-/* Эффект при наведении (опционально, подстройте под ваши остальные кнопки) */
+/* Состояние при наведении: кнопка становится «реальной» иконкой TikTok */
 .floating-contacts .contact-bubble.tiktok:hover {
-    background-color: #25f4ee; /* Бирюзовый отблеск TikTok при наведении */
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(37, 244, 238, 0.4);
+    background-color: #010101; /* Фирменный черный фон TikTok */
+    color: #ffffff;            /* Иконка становится белой */
+    border-color: #010101;     /* Рамка окрашивается в цвет фона */
+    transform: scale(1.1);     /* Легкое увеличение (если есть у других кнопок) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Объемная тень */
 }
 
 
