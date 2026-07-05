@@ -1086,7 +1086,7 @@ header {
     .classes-catalog-page .promo-image img { max-height: 300px; }
 }
 
-/* --- ЧИСТЫЙ И ИСПРАВЛЕННЫЙ МОБИЛЬНЫЙ МЕДИА-ЗАПРОС (ДО 768px) --- */
+/* --- ГАРАНТИРОВАННЫЙ МОБИЛЬНЫЙ ФИКС ДЛЯ КЛАССОВ, ИЗДЕЛИЙ И АКСЕССУАРОВ (ДО 768px) --- */
 @media (max-width: 768px) {
     /* Базовые элементы */
     .about-grid { grid-template-columns: 1fr; }
@@ -1100,156 +1100,202 @@ header {
     .hero-banner h1 { font-size: 2.2rem; }
     .hero-content h1 { font-size: 2.5rem; }
     .hero-content { text-align: center; padding: 0 20px; }
-    
+
     /* ========================================================
-       1. СЕТКА КЛАССОВ И ИЗДЕЛИЙ (В одну колонку + Перенос элементов)
+       1. БЛОКИ МАСТЕР-КЛАССОВ (Классы и Изделия в карточках)
        ======================================================== */
     .services-grid {
         display: flex !important;
         flex-direction: column !important;
-        gap: 0 !important; 
+        gap: 0 !important;
         padding: 0 10px;
     }
 
-    /* Карточка Класса на мобильном */
     .service-card {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto;
         height: auto !important;
         display: flex !important;
-        flex-direction: column !important; 
-        box-shadow: none !important; 
+        flex-direction: column !important; /* Делаем карточку главным флекс-контейнером */
+        box-shadow: none !important;
         border-radius: 0 !important;
-        background: transparent !important; /* Убираем белый фон карточек для красивого отображения линий */
+        background: transparent !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important; /* Линия разделения */
+        padding-bottom: 40px !important;
+        margin-bottom: 40px !important;
+    }
+    .service-card:last-child {
+        border-bottom: none !important;
+        margin-bottom: 0 !important;
     }
 
-    /* Меняем элементы местами внутри мастер-классов */
+    /* Освобождаем внутренние элементы из контейнера, чтобы карточка управляла их порядком */
     .service-info {
-        order: 1 !important; /* 1. Текст идет первым */
-        padding: 20px 0 !important;
-        height: auto !important;
-        display: flex !important;
-        flex-direction: column !important;
+        display: contents !important; 
+    }
+
+    /* Задаем строгий пошаговый порядок */
+    .service-info h3 {
+        order: 1 !important;        /* 1. ЗАГОЛОВОК НАВЕРХ */
+        font-size: 22px !important;
+        margin-top: 10px !important;
+        margin-bottom: 15px !important;
+        text-align: left;
     }
 
     .service-image {
-        order: 2 !important; /* 2. Фотография идет под текст */
+        order: 2 !important;        /* 2. ФОТОГРАФИЯ ВТОРОЙ */
         height: 240px !important;
         width: 100% !important;
         border-radius: 8px !important;
         overflow: hidden;
+        margin-bottom: 15px !important;
     }
-
     .service-image img { width: 100%; height: 100%; object-fit: cover; }
 
+    .service-price, 
+    .service-info p {
+        order: 3 !important;        /* 3. ТЕКСТ (Цена и Описание) ТРЕТЬИМ */
+        font-size: 14px !important;
+        margin-bottom: 10px !important;
+        line-height: 1.6 !important;
+        text-align: left;
+    }
+    .service-price { font-weight: 700; margin-bottom: 5px !important; }
+
     .service-info .book-btn {
-        order: 3 !important; /* 3. Кнопка всегда в самом низу карточки */
-        margin-top: 20px !important;
+        order: 4 !important;        /* 4. КНОПКА В САМЫЙ НИЗ */
+        margin-top: 15px !important;
         width: 100% !important;
         text-align: center;
-    }
-
-    .service-info h3 { font-size: 20px !important; margin-bottom: 10px !important; }
-    .service-info p { font-size: 14px !important; margin-bottom: 10px !important; }
-
-    /* ТОНКАЯ РАЗДЕЛИТЕЛЬНАЯ ЛИНИЯ МЕЖДУ КАРТОЧКАМИ МАСТЕР-КЛАССОВ */
-    .service-card {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-        padding-bottom: 30px !important;
-        margin-bottom: 30px !important;
-    }
-    .service-card:last-child {
-        border-bottom: none !important; /* У последней карточки линию убираем */
-        margin-bottom: 0 !important;
+        padding: 15px !important;
     }
 
     /* ========================================================
-       2. ИСПРАВЛЕНИЕ ПРОМО-БЛОКОВ («Для кого занятия» / «Изделия»)
-       ======================================================== */
-    .promo-grid, .promo-grid-reverse {
-        display: flex !important;
-        flex-direction: column !important; 
-        gap: 25px !important;
-    }
-
-    .promo-content, .promo-image { width: 100% !important; max-width: 100% !important; }
-    .promo-image img { width: 100%; height: auto; max-height: 300px; object-fit: cover; border-radius: 8px; }
-    .promo-image::before { display: none !important; } 
-    
-    .promo-content .promo-subtitle,
-    .promo-content .promo-subtitle1,
-    .promo-content .promo-subtitle2 { font-size: 1.4rem !important; margin-top: 15px !important; }
-    .promo-content h2 { font-size: 2rem !important; }
-    .btn-primary-dark { margin-top: 25px !important; width: 100%; text-align: center; padding: 15px; }
-
-    /* ТОНКАЯ ЛИНИЯ МЕЖДУ БОЛЬШИМИ СЕКЦИЯМИ НА СТРАНИЦЕ */
-    .master-classes, .second-promo, .promo-section, .services-section {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-        padding: 50px 20px !important;
-        margin-bottom: 0 !important;
-        margin-top: 0 !important;
-    }
-
-    /* ========================================================
-       3. БЛОК АКСЕССУАРОВ (Текст -> Фото -> Кнопка)
+       2. БЛОК АКСЕССУАРОВ (Тизер)
        ======================================================== */
     .accessories-teaser {
         padding: 50px 20px !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important; /* Линия разделения */
     }
 
     .teaser-container {
         display: flex !important;
-        flex-direction: column !important; /* Выстраиваем в один столбец */
-        gap: 20px !important;
-        text-align: center !important;
+        flex-direction: column !important; /* Управляет порядком содержимого */
+        gap: 0 !important;
     }
 
-    /* Включаем Flex-порядок для элементов внутри аксессуаров */
+    /* Раскрываем текстовую обертку */
     .teaser-content {
-        order: 1 !important; /* Текст (Заголовок + Описание) уходит наверх */
-        display: flex !important;
-        flex-direction: column !important;
+        display: contents !important;
     }
 
-    .teaser-content h2 { font-size: 26px !important; margin-bottom: 15px !important; }
-    .teaser-content p { font-size: 14px !important; margin-bottom: 0 !important; } /* Сбрасываем нижний маргин */
+    .teaser-content h2 {
+        order: 1 !important;        /* 1. ЗАГОЛОВОК НАВЕРХ */
+        font-size: 26px !important;
+        margin-bottom: 15px !important;
+        text-align: center;
+    }
 
     .teaser-image-collage {
-        order: 2 !important; /* Фотография встает строго под текст */
+        order: 2 !important;        /* 2. ФОТОГРАФИЯ ВТОРОЙ */
         width: 100% !important;
+        margin-bottom: 15px !important;
     }
-
     .teaser-image-collage img {
-        height: 250px !important; /* Ограничиваем высоту фото на мобильном */
+        height: 250px !important;
         width: 100% !important;
         object-fit: cover !important;
         border-radius: 8px !important;
     }
 
+    .teaser-content p {
+        order: 3 !important;        /* 3. ТЕКСТ ТРЕТЬИМ */
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 20px !important;
+        text-align: center;
+    }
+
     .btn-teaser {
-        order: 3 !important; /* Кнопка «В каталог» падает под фотографию */
-        margin-top: 15px !important;
+        order: 4 !important;        /* 4. КНОПКА В САМЫЙ НИЗ */
         width: 100% !important;
         text-align: center !important;
         padding: 15px !important;
+        margin-top: 0 !important;
     }
 
     /* ========================================================
-       Прочие мобильные фиксы окон, контактов и футера
+       3. БОЛЬШИЕ ПРОМО-БЛОКИ («Для кого занятия» / «Изделия»)
        ======================================================== */
+    .promo-grid, .promo-grid-reverse {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+
+    .promo-content {
+        display: contents !important; /* Разрушаем обертку для точечной сортировки */
+    }
+
+    /* Сортировка внутри промо-секций */
+    .promo-content .promo-subtitle,
+    .promo-content .promo-subtitle1,
+    .promo-content .promo-subtitle2,
+    .promo-content h2 {
+        order: 1 !important;        /* 1. ЗАГОЛОВКИ НАВЕРХ */
+        text-align: left;
+    }
+    .promo-content h2 { font-size: 2rem !important; margin-bottom: 20px !important; }
+    .promo-content .promo-subtitle,
+    .promo-content .promo-subtitle1,
+    .promo-content .promo-subtitle2 { font-size: 1.3rem !important; margin-top: 10px !important; margin-bottom: 5px !important; }
+
+    .promo-image {
+        order: 2 !important;        /* 2. ФОТОГРАФИЯ ВТОРОЙ */
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+    .promo-image img { width: 100%; height: auto; max-height: 300px; object-fit: cover; border-radius: 8px; }
+    .promo-image::before { display: none !important; }
+
+    .promo-content p:not([class]) {
+        order: 3 !important;        /* 3. ТЕКСТ ТРЕТЬИМ */
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 20px !important;
+        text-align: left;
+    }
+
+    .btn-primary-dark {
+        order: 4 !important;        /* 4. КНОПКА В САМЫЙ НИЗ */
+        margin-top: 0 !important;
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+    }
+
+    /* Тонкие линии между большими контентными секциями экрана */
+    .master-classes, .second-promo, .promo-section, .services-section {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important;
+        padding: 50px 20px !important;
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* Мобильные фиксы окон, контактов и футера */
     .service-popup-container { flex-direction: column; }
     .service-popup-image { max-width: 100%; height: 250px; }
     .service-popup-info { padding: 25px; }
     
     .contact-section .contact-links { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 15px !important; width: 100%; }
-    .contact-section .contact-links a { width: 100%; max-width: 320px; justify-content: center; text-align: center; word-break: normal; padding: 15px; }
+    .contact-section .contact-links a { width: 100%; max-width: 320px; justify-content: center; text-align: center; padding: 15px; }
     .contact-section .contact-links a .email-text { word-break: break-all; font-size: 0.9rem; }
-    .contact-section { padding: 60px 20px !important; margin-top: 50px !important; }
+    .contact-section { padding: 60px 20px !important; margin-top: 50px !important; border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important; }
 
     .floating-contacts { bottom: 20px; right: 10px; gap: 10px; top: auto; transform: none; }
     .contact-bubble { opacity: 0.8; width: 40px; height: 40px; font-size: 1.2rem; }
-    .contact-bubble:active { opacity: 1; transform: scale(0.9); }
 
     .desktop-only { display: none; }
     .mobile-only { display: flex; }
@@ -1260,16 +1306,14 @@ header {
     .footer-bottom .container { flex-direction: column; gap: 10px; }
 }
 
-/* Прочие мелкие медиа-запросы */
+/* Дополнительные мелкие сетки */
 @media (max-width: 650px) {
     .info-grid { grid-template-columns: 1fr; }
     .info-image { height: 400px; }
 }
-
 @media (max-width: 600px) {
     .services-grid { grid-template-columns: 1fr; }
 }
-
 @media (max-width: 576px) {
     .catalog-shop-links { flex-direction: column; }
 }
