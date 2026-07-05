@@ -1401,3 +1401,42 @@ header {
 .promo-grid-reverse .promo-image::before {
     display: none !important;
 }
+
+/* ========================================================
+   ЕДИНЫЙ СТИЛЬ ФОТОГРАФИЙ НА ГЛАВНОЙ СТРАНИЦЕ
+   (Карусель с картинами не затрагивается)
+   ======================================================== */
+
+/* 1. Скругление для блока "О нас" */
+.about-image img {
+    border-radius: 12px !important;
+    box-shadow: none !important; /* На всякий случай полностью убираем старую рамку */
+}
+
+/* 2. Скругление для больших промо-блоков ("Для кого занятия" / "Изделия") */
+.promo-image img {
+    border-radius: 12px !important;
+}
+
+/* 3. Отключаем декоративную рамку-подложку в промо-блоках на десктопе */
+.promo-image::before, 
+.promo-grid-reverse .promo-image::before {
+    display: none !important;
+}
+
+/* 4. Скругление для карточек в блоке "Мастер-классы" */
+/* Скругляем саму картинку внутри карточки */
+.service-image img,
+.classes-catalog-page .service-image img {
+    border-radius: 12px 12px 0 0 !important; /* Скругляем только верхние углы, чтобы они подходили к форме карточки */
+}
+
+/* 5. Скругление для блока "Аксессуары" (Тизер) */
+.teaser-image-collage img {
+    border-radius: 12px !important;
+}
+
+/* 6. Скругление для карточек в нижней Инфо-секции (если они используются на главной) */
+.info-image img {
+    border-radius: 12px !important;
+}
