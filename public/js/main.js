@@ -167,29 +167,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 7. МОДАЛЬНОЕ ОКНО: ПОДРОБНЕЕ О МАСТЕР-КЛАССЕ
-    const serviceModal = document.getElementById('service-modal');
-    const closeService = document.getElementById('close-service');
+const serviceModal = document.getElementById('service-modal');
+const closeService = document.getElementById('close-service');
 
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('open-service-modal')) {
-            const card = e.target.closest('.service-card');
-            const title = card.querySelector('h3').innerText;
-            const price = card.querySelector('.service-price').innerText;
-            const desc = card.querySelector('p').innerHTML;
-            const imgSrc = card.querySelector('img').src;
-
-            document.getElementById('service-popup-title').innerText = title;
-            document.getElementById('service-popup-price').innerText = price;
-            document.getElementById('service-popup-desc').innerHTML = desc;
-            document.getElementById('service-popup-img').src = imgSrc;
-
-            const message = encodeURIComponent(`Здравствуйте! Хочу уточнить детали по мастер-классу "${title}" (${price}).`);
-            document.getElementById('service-tg-link').href = `https://t.me/Mari_naumova_art?text=${message}`;
-
-            serviceModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+// Проверяем, есть ли кнопка закрытия на текущей странице, прежде чем вешать событие
+if (closeService) {
+    closeService.addEventListener('click', () => {
+        if (serviceModal) serviceModal.style.display = 'none';
+        document.body.style.overflow = '';
     });
+}
+
+// Код открытия окна оставляем, он безопасен, так как слушает клики по всему документу
+document.addEventListener('click', (e) => {
+    // Проверяем, существует ли вообще модальное окно на этой странице
+    if (!serviceModal) return; 
+
+    if (e.target.classList.contains('open-service-modal')) {
+        const card = e.target.closest('.service-card');
+        const title = card.querySelector('h3').innerText;
+        const price = card.querySelector('.service-price').innerText;
+        const desc = card.querySelector('p').innerHTML;
+        const imgSrc = card.querySelector('img').src;
+
+        document.getElementById('service-popup-title').innerText = title;
+        document.getElementById('service-popup-price').innerText = price;
+        document.getElementById('service-popup-desc').innerHTML = desc;
+        document.getElementById('service-popup-img').src = imgSrc;
+
+        const message = encodeURIComponent(`Здравствуйте! Хочу уточнить детали по мастер-классу "${title}" (${price}).`);
+        document.getElementById('service-tg-link').href = `https://t.me/Mari_naumova_art?text=${message}`;
+
+        serviceModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+});
 
     closeService?.addEventListener('click', () => {
         serviceModal.style.display = 'none';

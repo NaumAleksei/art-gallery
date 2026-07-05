@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Арт-галерея и Мастер-классы | Лепка из глины, Интерьерная живопись</title>
-    <title>Интерьерные картины ручной работы и мастер классы по лепке и рисованию| Арт-студия Марины Наумовой</title>
+    <!-- Улучшено: Объединили два дублирующих тайтла в один информативный -->
+    <title>Интерьерные картины ручной работы и мастер-классы по лепке и рисованию | Арт-студия Марины Наумовой</title>
 
     <link rel="icon" type="image/png" href="public/images/favicon.png">
 
-    <meta name="description" content="Уникальные картины из текстурной пасты для вашего интерьера. Мастер классы по лепке и живописи. Авторская живопись, мастер-классы и галерея современных работ. ">
+    <meta name="description" content="Уникальные картины из текстурной пасты для вашего интерьера. Мастер-классы по лепке и живописи. Авторская живопись, мастер-классы и галерея современных работ.">
+    <meta name="keywords" content="интерьерные картины, Волгоград, мастер-классы, лепка, рисование, интерьер, глина, полимерная глина, арт, текстурная паста, купить картину, современная живопись, арт-галерея">
 
-    <meta name="keywords" content="интерьерные картины, Волгоград, мастер-классы, мастер классы, лепка, рисование, интерьер, глина,
-     полимерная глина, арт, креативное, развитие, для детей, для взрослых, классы с детьми, текстурная паста, купить картину, современная живопись, арт-галерея">
-
-    <link rel="canonical" href="https://marinaart.ru/">
+    <link rel="canonical" href="https://marinaart.ru/classes.html">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="public/css/style.css">
     
+    <!-- Подключаем скрипты. Обратите внимание: defer гарантирует, что они выполнятся после загрузки страницы -->
     <script src="public/js/main.js" defer></script>
     <script src="public/js/auth.js" defer></script>
 </head>
 <body>
 
-    <!-- Yandex.Metrika counter -->
+<!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -33,38 +32,33 @@
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108172556', 'ym');
-
     ym(108172556, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/108172556" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
 
+<!-- Плавающие контакты -->
 <div class="floating-contacts">
     <a href="tel:+79297880571" class="contact-bubble phone mobile-only" title="Позвонить нам">
         <i class="fas fa-phone-alt"></i>
     </a>
-
     <button id="open-callback" class="contact-bubble phone desktop-only" title="Заказать звонок">
         <i class="fas fa-phone-alt"></i>
     </button>
-    
     <a href="https://t.me/Mari_naumova_art" target="_blank" class="contact-bubble telegram" title="Telegram">
         <i class="fab fa-telegram-plane"></i>
     </a>
-    
     <a href="https://wa.me/79297880571" target="_blank" class="contact-bubble whatsapp" title="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-    
     <a href="https://vk.com/club237346777" target="_blank" class="contact-bubble vk" title="ВКонтакте">
         <i class="fab fa-vk"></i>
     </a>
-<a href="https://www.tiktok.com/@marina_art01?_r=1&_t=ZS-97j7UWFFkKD" target="_blank" class="contact-bubble tiktok" title="TikTok">
+    <a href="https://www.tiktok.com/@marina_art01?_r=1&_t=ZS-97j7UWFFkKD" target="_blank" class="contact-bubble tiktok" title="TikTok">
         <i class="fab fa-tiktok"></i>
     </a>
-
 </div>
 
+<!-- Модальное окно обратного звонка -->
 <div id="callback-modal" class="modal-overlay">
     <div class="modal-content callback-popup">
         <span class="close-modal" id="close-callback">&times;</span>
@@ -75,220 +69,203 @@
             <input type="tel" id="callback-phone" placeholder="+7 (___) ___-__-__" required>
             <button type="submit" class="book-btn">Жду звонка</button>
             <p style="font-size: 10px; color: #999; margin-top: 10px; line-height: 1.2;">
-    Нажимая на кнопку, вы даете согласие на 
-    <a href="Policy.pdf" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: underline;">
-        обработку персональных данных
-    </a>
-</p>
+                Нажимая на кнопку, вы даете согласие на <a href="Policy.pdf" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: underline;">обработку персональных данных</a>
+            </p>
         </form>
     </div>
 </div>
 
-  <header>
-        <div class="container header-flex">
-            <div class="logo">MARINA<span>ART</span></div>
-            
-           <nav id="main-nav">
-    <a href="#home">Главная</a>
-    <a href="#about">Обо Мне</a>
-    <a href="#catalog">Галерея</a>
-    <a href="#master-classes">Мастер-классы</a>
-    <a href="#contact">Контакты</a>
-</nav>
-
-           <div class="header-controls">
-    <a href="login.html" class="icon-btn user-login">
-        <i class="far fa-user"></i>
-        <span>Вход</span>
-    </a>
-    
-    <a href="cart.html" class="icon-btn cart-icon">
-        <i class="fas fa-shopping-bag"></i>
-        <span class="cart-count">0</span>
-    </a>
-    
-    <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars"></i>
-    </div>
-</div>
-    </header>
-
-    <main class="classes-catalog-page" style="padding: 60px 0 100px; background-color: #fff;">
-        <div class="container">
-            
-            <div style="text-align: center; margin-bottom: 50px;">
-                <a href="index.html" style="color: #888; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 15px;">← На главную</a>
-                <h1 style="font-size: 36px; text-transform: uppercase; letter-spacing: 1px; color: #222;">Наши Мастер-классы</h1>
-                <p style="color: #666; max-width: 600px; margin: 10px auto 0;">Выберите подходящее направление для себя, ребенка или семейного праздника. Все материалы включены в стоимость.</p>
+<header>
+    <div class="container header-flex">
+        <div class="logo">MARINA<span>ART</span></div>
+        <!-- Исправлено: Ссылки теперь ведут на главную страницу к соответствующим блокам, а не в никуда -->
+        <nav id="main-nav">
+            <a href="index.html#home">Главная</a>
+            <a href="index.html#about">Обо Мне</a>
+            <a href="index.html#catalog">Галерея</a>
+            <a href="classes.html" class="active">Мастер-классы</a>
+            <a href="index.html#contact">Контакты</a>
+        </nav>
+        <div class="header-controls">
+            <a href="login.html" class="icon-btn user-login">
+                <i class="far fa-user"></i>
+                <span>Вход</span>
+            </a>
+            <a href="cart.html" class="icon-btn cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
             </div>
+        </div>
+    </div>
+</header>
 
-            <section class="master-classes" style="margin-bottom: 60px;">
-                <div class="promo-grid">
-                    <div class="promo-content">
-                        <p class="promo-subtitle">Для кого наши занятия:</p>
-                        <p><strong>Для детей</strong> — работа с мелкой моторикой и координацией напрямую влияет на речь и мышление, развивает фантазию. Через прикосновения к материалу ребенок учится чувствовать форму и объем, а главное — доводить дело до конца, получая настоящий, долговечный результат.</p>
-                        <br>
-                        <p><strong>Для всей семьи</strong> — дети и родители творят вместе. Это бесценное время вместе, когда вы можете объединить усилия для создания общего семейного шедевра или просто наслаждаться процессом лепки, обмениваясь идеями и поддерживая друг друга.</p>
-                        <br>
-                        <p><strong>Для взрослых</strong> — это идеальный способ замедлиться после рабочей недели. Тактильное творчество заземляет, снимает стресс и дарит невероятное удовольствие.</p>
-                        <a href="https://t.me/Mari_Naumova_arts" target="_blank" rel="noopener noreferrer" class="btn-primary-dark" style="margin-top: 20px; display: inline-block;">Написать в Telegram</a>
-                    </div>
-                    <div class="promo-image">
-                        <img src="public/images/master2.jpg" alt="Мастерская художника">
-                    </div>
+<main class="classes-catalog-page" style="padding: 60px 0 100px; background-color: #fff;">
+    <div class="container">
+        
+        <div style="text-align: center; margin-bottom: 50px;">
+            <a href="index.html" style="color: #888; text-decoration: none; font-size: 14px; display: inline-block; margin-bottom: 15px;">← На главную</a>
+            <h1 style="font-size: 36px; text-transform: uppercase; letter-spacing: 1px; color: #222;">Наши Мастер-классы</h1>
+            <p style="color: #666; max-width: 600px; margin: 10px auto 0;">Выберите подходящее направление для себя, ребенка или семейного праздника. Все материалы включены в стоимость.</p>
+        </div>
+
+        <section class="master-classes" style="margin-bottom: 60px;">
+            <div class="promo-grid">
+                <div class="promo-content">
+                    <p class="promo-subtitle">Для кого наши занятия:</p>
+                    <p><strong>Для детей</strong> — работа с мелкой моторикой и координацией напрямую влияет на речь и мышление, развивает фантазию. Через прикосновения к материалу ребенок учится чувствовать форму и объем, а главное — доводить дело до конца, получая настоящий, долговечный результат.</p>
+                    <br>
+                    <p><strong>Для всей семьи</strong> — дети и родители творят вместе. Это бесценное время вместе, когда вы можете объединить усилия для создания общего семейного шедевра или просто наслаждаться процессом лепки, обмениваясь идеями и поддерживая друг друга.</p>
+                    <br>
+                    <p><strong>Для взрослых</strong> — это идеальный способ замедлиться после рабочей недели. Тактильное творчество заземляет, снимает стресс и дарит невероятное удовольствие.</p>
+                    <a href="https://t.me/Mari_naumova_art" target="_blank" rel="noopener noreferrer" class="btn-primary-dark" style="margin-top: 20px; display: inline-block; padding: 10px 20px; background: #222; color: #fff; text-decoration: none; border-radius: 4px;">Написать в Telegram</a>
                 </div>
-            </section>
-
-            <section class="promo-section second-promo" style="margin-bottom: 80px; background: #fbf9f6; padding: 40px; border-radius: 8px;">
-                <div class="promo-grid promo-grid-reverse">
-                    <div class="promo-content">
-                        <p class="promo-subtitle">Что включено:</p>
-                        <p>Все необходимые материалы, профессиональные инструменты и крафт-упаковка. Используем только сертифицированные, гипоаллергенные составы.</p>
-                        
-                        <p class="promo-subtitle1" style="margin-top: 15px; font-weight: bold;">Время:</p> 
-                        <p>Продолжительность 1-2 часа</p>
-                        
-                        <p class="promo-subtitle2" style="margin-top: 15px; font-weight: bold;">Место проведения:</p>
-                        <p>Выездной формат: мы сами приедем к вам! Организуем полноценную творческую зону на вашей территории. Привезем всё необходимое, чтобы ваш праздник наполнился магией созидания.</p>
-                        <p style="margin-top: 10px; font-style: italic; color: #666;">Создание одного изделия каждым участником. Изделие можно забрать сразу в подарочной упаковке с инструкцией по домашней росписи после полного высыхания.</p>
-                    </div>
+                <div class="promo-image">
+                    <img src="public/images/master2.jpg" alt="Мастерская художника">
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="prices" class="services-section">
-                <div style="text-align: center; margin-bottom: 40px;">
-                    <h2 style="font-size: 26px; text-transform: uppercase;">Доступные программы и стоимость</h2>
+        <section class="promo-section second-promo" style="margin-bottom: 80px; background: #fbf9f6; padding: 40px; border-radius: 8px;">
+            <div class="promo-grid promo-grid-reverse">
+                <div class="promo-content">
+                    <p class="promo-subtitle">Что включено:</p>
+                    <p>Все необходимые материалы, профессиональные инструменты и крафт-упаковка. Используем только сертифицированные, гипоаллергенные составы.</p>
+                    
+                    <p class="promo-subtitle1" style="margin-top: 15px; font-weight: bold;">Время:</p> 
+                    <p>Продолжительность 1-2 часа</p>
+                    
+                    <p class="promo-subtitle2" style="margin-top: 15px; font-weight: bold;">Место проведения:</p>
+                    <p>Выездной формат: мы сами приедем к вам! Организуем полноценную творческую зону на вашей территории. Привезем всё необходимое, чтобы ваш праздник наполнился магией созидания.</p>
+                    <p style="margin-top: 10px; font-style: italic; color: #666;">Создание одного изделия каждым участником. Изделие можно забрать сразу в подарочной упаковке с инструкцией по домашней росписи после полного высыхания.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="prices" class="services-section">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 26px; text-transform: uppercase;">Доступные программы и стоимость</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card category-clay">
+                    <div class="service-image"><img src="public/images/21.jpg" alt="Ключница из глины"></div>
+                    <div class="service-info">
+                        <div class="service-price">от 1000 ₽ / чел</div>
+                        <h3>Ключница из глины</h3>
+                        <p>Продолжительность: 1.5 часа<br>Материал: Самозатвердевающая глина</p>
+                        <button class="book-btn open-service-modal">Подробнее</button>
+                    </div>
                 </div>
                 
-                <div class="services-grid">
-                    <div class="service-card category-clay">
-                        <div class="service-image"><img src="public/images/21.jpg" alt="Глина 1"></div>
-                        <div class="service-info">
-                            <div class="service-price">от 1000 ₽ / чел</div>
-                            <h3>Ключница из глины</h3>
-                            <p>Продолжительность: 1.5 часа<br>Материал: Самозатвердевающая глина</p>
-                            <button class="book-btn open-service-modal">Подробнее</button>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card category-clay">
-                        <div class="service-image"><img src="public/images/f1.jpg" alt="Глина 2"></div>
-                        <div class="service-info">
-                            <div class="service-price">от 1000 ₽ / чел</div>
-                            <h3>Ведьмина шкатулка</h3>
-                            <p>Продолжительность: 1.5 часа<br>Материал: Самозатвердевающая глина</p>
-                            <button class="book-btn open-service-modal">Забронировать</button>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card category-clay">
-                        <div class="service-image"><img src="public/images/f2.jpg" alt="Глина 3"></div>
-                        <div class="service-info">
-                            <div class="service-price">от 1000 ₽ / чел</div>
-                            <h3>Лесной домик из глины</h3>
-                            <p>Продолжительность: 1.5 часа<br>Материал: Самозатвердевающая глина</p>
-                            <button class="book-btn open-service-modal">Подробнее</button>
-                        </div>
-                    </div>
-
-                    <div class="service-card category-plasticine">
-                        <div class="service-image"><img src="public/images/f3.jpg" alt="Пластилин 1"></div>
-                        <div class="service-info">
-                            <div class="service-price">от 1000 ₽ / чел</div>
-                            <h3>Гимнастка</h3>
-                            <p>Продолжительность: 1.5 часа<br>Материал: Скульптурный пластилин</p>
-                            <button class="book-btn open-service-modal">Забронировать</button>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card category-plasticine">
-                        <div class="service-image"><img src="public/images/f4.jpg" alt="Пластилин 2"></div>
-                        <div class="service-info">
-                            <div class="service-price">от 1000 ₽ / чел</div>
-                            <h3>Подсвечник Китти</h3>
-                            <p>Продолжительность: 1.5 часа<br>Материал: Скульптурный пластилин</p>
-                            <button class="book-btn open-service-modal">Подробнее</button>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card category-plasticine">
-                        <div class="service-image"><img src="public/images/f5.jpg" alt="Пластилин 3"></div>
-                        <div class="service-info">
-                            <div class="service-price">от 1000 ₽ / чел</div>
-                            <h3>Волшебный единорог</h3>
-                            <p>Продолжительность: 1.5 часа<br>Материал: Скульптурный пластилин</p>
-                            <button class="book-btn open-service-modal">Забронировать</button>
-                        </div>
-                    </div>
-
-                    <div class="service-card category-painting">
-                        <div class="service-image"><img src="public/images/master3.jpg" alt="Живопись 1"></div>
-                        <div class="service-info">
-                            <div class="service-price">от 1500 ₽ / чел</div>
-                            <h3>Горы</h3>
-                            <p>Продолжительность: 2 часа<br>Материал: текстурная паста, акрил</p>
-                            <button class="book-btn open-service-modal">Подробнее</button>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card category-painting">
-                        <div class="service-image"><img src="public/images/23.jpg" alt="Живопись 2"></div>
-                        <div class="service-info">
-                            <div class="service-price">от 1500 ₽ / чел</div>
-                            <h3>Сны</h3>
-                            <p>Продолжительность: 2 часа<br>Материал: текстурная паста, акрил</p>
-                            <button class="book-btn open-service-modal">Забронировать</button>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card category-painting">
-                        <div class="service-image"><img src="public/images/22.jpg" alt="Живопись 3"></div>
-                        <div class="service-info">
-                            <div class="service-price">от 1500 ₽ / чел</div>
-                            <h3>Одуванчики</h3>
-                            <p>Продолжительность: 2 часа<br>Материал: текстурная паста, акрил</p>
-                            <button class="book-btn open-service-modal">Подробнее</button>
-                        </div>
+                <div class="service-card category-clay">
+                    <div class="service-image"><img src="public/images/f1.jpg" alt="Ведьмина шкатулка"></div>
+                    <div class="service-info">
+                        <div class="service-price">от 1000 ₽ / чел</div>
+                        <h3>Ведьмина шкатулка</h3>
+                        <p>Продолжительность: 1.5 часа<br>Материал: Самозатвердевающая глина</p>
+                        <button class="book-btn open-service-modal">Забронировать</button>
                     </div>
                 </div>
-            </section>
+                
+                <div class="service-card category-clay">
+                    <div class="service-image"><img src="public/images/f2.jpg" alt="Лесной домик из глины"></div>
+                    <div class="service-info">
+                        <div class="service-price">от 1000 ₽ / чел</div>
+                        <h3>Лесной домик из глины</h3>
+                        <p>Продолжительность: 1.5 часа<br>Материал: Самозатвердевающая глина</p>
+                        <button class="book-btn open-service-modal">Подробнее</button>
+                    </div>
+                </div>
 
-        </div>
-    </main>
+                <div class="service-card category-plasticine">
+                    <div class="service-image"><img src="public/images/f3.jpg" alt="Гимнастка"></div>
+                    <div class="service-info">
+                        <div class="service-price">от 1000 ₽ / чел</div>
+                        <h3>Гимнастка</h3>
+                        <p>Продолжительность: 1.5 часа<br>Материал: Скульптурный пластилин</p>
+                        <button class="book-btn open-service-modal">Забронировать</button>
+                    </div>
+                </div>
+                
+                <div class="service-card category-plasticine">
+                    <div class="service-image"><img src="public/images/f4.jpg" alt="Подсвечник Китти"></div>
+                    <div class="service-info">
+                        <div class="service-price">от 1000 ₽ / чел</div>
+                        <h3>Подсвечник Китти</h3>
+                        <p>Продолжительность: 1.5 часа<br>Материал: Скульптурный пластилин</p>
+                        <button class="book-btn open-service-modal">Подробнее</button>
+                    </div>
+                </div>
+                
+                <div class="service-card category-plasticine">
+                    <div class="service-image"><img src="public/images/f5.jpg" alt="Волшебный единорог"></div>
+                    <div class="service-info">
+                        <div class="service-price">от 1000 ₽ / чел</div>
+                        <h3>Волшебный единорог</h3>
+                        <p>Продолжительность: 1.5 часа<br>Материал: Скульптурный пластилин</p>
+                        <button class="book-btn open-service-modal">Забронировать</button>
+                    </div>
+                </div>
 
-    
-  <footer class="main-footer">
+                <div class="service-card category-painting">
+                    <div class="service-image"><img src="public/images/master3.jpg" alt="Горы"></div>
+                    <div class="service-info">
+                        <div class="service-price">от 1500 ₽ / чел</div>
+                        <h3>Горы</h3>
+                        <p>Продолжительность: 2 часа<br>Материал: текстурная паста, акрил</p>
+                        <button class="book-btn open-service-modal">Подробнее</button>
+                    </div>
+                </div>
+                
+                <div class="service-card category-painting">
+                    <div class="service-image"><img src="public/images/23.jpg" alt="Сны"></div>
+                    <div class="service-info">
+                        <div class="service-price">от 1500 ₽ / чел</div>
+                        <h3>Сны</h3>
+                        <p>Продолжительность: 2 часа<br>Материал: текстурная паста, акрил</p>
+                        <button class="book-btn open-service-modal">Забронировать</button>
+                    </div>
+                </div>
+                
+                <div class="service-card category-painting">
+                    <div class="service-image"><img src="public/images/22.jpg" alt="Одуванчики"></div>
+                    <div class="service-info">
+                        <div class="service-price">от 1500 ₽ / чел</div>
+                        <h3>Одуванчики</h3>
+                        <p>Продолжительность: 2 часа<br>Материал: текстурная паста, акрил</p>
+                        <button class="book-btn open-service-modal">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="main-footer">
     <div class="container footer-grid">
         <div class="footer-column">
-            <a href="#home" class="logo">MARINA<span>ART</span></a>
-            <p class="footer-about">Мастер классы по лепке из глины. Создаю текстурные интерьерные картины и изделия глины.</p>
+            <a href="index.html#home" class="logo">MARINA<span>ART</span></a>
+            <p class="footer-about">Мастер-классы по лепке из глины. Создаю текстурные интерьерные картины и изделия из глины.</p>
             <div class="footer-social">
-                <a href="https://t.me/Mari_Naumova_arts" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-telegram"></i>
-    </a>
-    
-    <a href="https://ru.pinterest.com/mvnaumova/" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-pinterest"></i>
-    </a>
-    
-    <a href="https://vk.com/club237346777" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-vk"></i>
-    </a>
-<a href="https://www.tiktok.com/@marina_art01?_r=1&_t=ZS-97j7UWFFkKD" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-
+                <a href="https://t.me/Mari_naumova_art" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+                <a href="https://ru.pinterest.com/mvnaumova/" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i></a>
+                <a href="https://vk.com/club237346777" target="_blank" rel="noopener noreferrer"><i class="fab fa-vk"></i></a>
+                <a href="https://www.tiktok.com/@marina_art01?_r=1&_t=ZS-97j7UWFFkKD" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
             </div>
         </div>
 
         <div class="footer-column">
             <h4>Навигация</h4>
             <ul class="footer-links">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#catalog">Галерея</a></li>
-                <li><a href="#about">О художнике</a></li>
-                <li><a href="#master-classes">Мастер-классы</a></li>
-                <li><a href="#contact">Контакты</a></li>
+                <li><a href="index.html#home">Главная</a></li>
+                <li><a href="index.html#catalog">Галерея</a></li>
+                <li><a href="index.html#about">О художнике</a></li>
+                <li><a href="classes.html">Мастер-классы</a></li>
+                <li><a href="index.html#contact">Контакты</a></li>
             </ul>
         </div>
 
@@ -306,19 +283,44 @@
         <div class="container">
             <p>&copy; 2026 Marina Art Gallery. Все права защищены.</p>
             <p class="legal-info" style="font-size: 11px; color: #999; margin-top: 15px; line-height: 1.4;">
-    <a href="Policy.pdf" target="_blank" rel="noopener noreferrer" style="color: #bbb; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s;">
-        Пользовательское соглашение и политика конфиденциальности (PDF)
-    </a>
-</p>
+                <a href="Policy.pdf" target="_blank" rel="noopener noreferrer" style="color: #bbb; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); transition: 0.3s;">
+                    Пользовательское соглашение и политика конфиденциальности (PDF)
+                </a>
+            </p>
             <p class="designer">Design by Naumov Aleksei</p>
         </div>
     </div>
 </footer>
 
-    <div id="lightbox" class="lightbox">
+<!-- ЛАЙТБОКС ДЛЯ ФОТОГАЛЕРЕИ -->
+<div id="lightbox" class="lightbox">
     <span class="lightbox-close">&times;</span>
     <img class="lightbox-content" id="lightbox-img">
     <div id="lightbox-caption"></div>
+</div>
+
+<!-- ==========================================
+     ДОБАВЛЕНО: МОДАЛЬНОЕ ОКНО ДЛЯ МАСТЕР-КЛАССОВ 
+     ========================================== -->
+<div id="service-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content service-popup-content" style="position: relative; max-width: 600px; width: 90%; background: #fff; padding: 30px; border-radius: 8px; margin: auto;">
+        <span class="close-modal" id="close-service" style="position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer;">&times;</span>
+        
+        <div class="modal-service-flex" style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
+            <div style="flex: 1; min-width: 200px;">
+                <img id="service-popup-img" src="" alt="" style="width: 100%; height: auto; border-radius: 6px; object-fit: cover;">
+            </div>
+            <div style="flex: 1.2; min-width: 240px;">
+                <div id="service-popup-price" style="font-size: 18px; font-weight: 700; color: #566b58; margin-bottom: 10px;"></div>
+                <h3 id="service-popup-title" style="font-size: 24px; margin-bottom: 15px; color: #222;"></h3>
+                <div id="service-popup-desc" style="font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 20px;"></div>
+                
+                <a id="service-tg-link" href="" target="_blank" class="book-btn" style="display: inline-block; text-align: center; width: 100%; text-decoration: none; background: #566b58; color: #fff; padding: 12px; border-radius: 4px; font-weight: bold;">
+                    Написать в Telegram
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
