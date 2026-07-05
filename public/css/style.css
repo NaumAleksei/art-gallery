@@ -683,6 +683,13 @@ header {
         flex-direction: column;
     }
 
+        /* Разделительная линия МЕЖДУ карточками мастер-классов */
+    .service-card:not(:last-child) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Тонкая серая линия */
+        padding-bottom: 30px !important; /* Отступ до линии, чтобы текст не прилипал */
+        margin-bottom: 30px !important; /* Отступ после линии до следующей карточки */
+    }
+
     /* Картинка внутри карточки */
     .service-image {
         height: 220px !important; /* Задаем фиксированную высоту только для фото */
@@ -753,14 +760,6 @@ header {
         margin-bottom: 40px !important;
     }
 }
-
-@media (max-width: 768px) {
-    /* Разделительная линия МЕЖДУ карточками мастер-классов */
-    .service-card:not(:last-child) {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important; /* Тонкая серая линия */
-        padding-bottom: 30px !important; /* Отступ до линии, чтобы текст не прилипал */
-        margin-bottom: 30px !important; /* Отступ после линии до следующей карточки */
-    }
 
 /* Стиль карточки товара в корзине */
 .cart-item {
