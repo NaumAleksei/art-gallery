@@ -664,6 +664,96 @@ header {
     overflow-y: auto;
 }
 
+@media (max-width: 768px) {
+    /* Перестраиваем сетку карточек в одну колонку */
+    .services-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px !important;
+        padding: 0 10px;
+    }
+
+    /* Корректируем саму карточку */
+    .service-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto;
+        height: auto !important; /* Убираем фиксированную высоту, если она была */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Картинка внутри карточки */
+    .service-image {
+        height: 220px !important; /* Задаем фиксированную высоту только для фото */
+        width: 100%;
+    }
+
+    .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Чтобы фото не сжималось и не деформировалось */
+    }
+
+    /* Блок с текстом под картинкой */
+    .service-info {
+        padding: 20px !important;
+        height: auto !important; /* Позволяет блоку растягиваться под размер текста */
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .service-info h3 {
+        font-size: 20px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .service-info p {
+        font-size: 14px !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Кнопка в самом низу карточки */
+    .service-info .book-btn {
+        margin-top: auto; /* Прижимает кнопку к низу, если тексты разной длины */
+        width: 100% !important; /* Кнопка на всю ширину экрана на мобилке удобнее для нажатия */
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Заставляем колонки вставать друг под друга */
+    .promo-grid, .promo-grid-reverse {
+        display: flex !important;
+        flex-direction: column !important; /* Текст, затем картинка */
+        gap: 20px !important;
+    }
+
+    /* Если хотите, чтобы во втором блоке картинка была СВЕРХУ текста, а не снизу: */
+    .promo-grid-reverse {
+        flex-direction: column-reverse !important;
+    }
+
+    .promo-content, .promo-image {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .promo-image img {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+    
+    /* Слегка уменьшаем отступы секций, чтобы не было гигантских пустых экранов */
+    .promo-section, .second-promo {
+        padding: 20px !important;
+        margin-bottom: 40px !important;
+    }
+}
+
 /* Стиль карточки товара в корзине */
 .cart-item {
     display: flex;
