@@ -1681,3 +1681,184 @@ header {
     border-radius: 8px;
     font-family: inherit;
 }
+
+
+/* --- СТИЛИ ТИЗЕРА НА ГЛАВНОЙ --- */
+.accessories-teaser {
+    padding: 100px 0;
+    background-color: #fbf9f6;
+    border-top: 1px solid #f0edeb;
+}
+.teaser-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.teaser-content {
+    flex: 1;
+}
+.teaser-content h2 {
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #222;
+}
+.teaser-content p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+.btn-teaser {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #566b58; /* Ваш фирменный зеленый */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+.btn-teaser:hover {
+    background-color: #435445;
+}
+.teaser-image-collage {
+    flex: 1;
+}
+.teaser-image-collage img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    object-fit: cover;
+    height: 400px;
+}
+
+/* --- СТИЛИ НОВОЙ СТРАНИЦЫ КАТАЛОГА --- */
+.catalog-page {
+    padding: 60px 0 100px;
+    background-color: #fff;
+}
+.catalog-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+}
+.back-link:hover { color: #566b58; }
+
+.catalog-header h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.catalog-shop-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Кнопки маркетплейсов */
+.btn-shop {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    transition: transform 0.2s;
+}
+.btn-shop:hover { transform: translateY(-2px); }
+.btn-wb { background-color: #cb11ab; }
+.btn-tg { background-color: #24a1de; }
+.btn-icon { width: 20px; height: 20px; }
+
+/* Сетка карточек на новой странице */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+.product-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow 0.3s;
+}
+.product-card:hover { box-shadow: 0 15px 35px rgba(0,0,0,0.07); }
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #566b58;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 3px;
+    z-index: 2;
+}
+.product-img {
+    height: 320px;
+    background: #f7f7f7;
+}
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.product-details {
+    padding: 25px;
+}
+.product-details h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.product-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 15px;
+}
+.product-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.card-btn-tg {
+    display: block;
+    text-align: center;
+    background: #f5f5f5;
+    color: #333;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+.card-btn-tg:hover {
+    background: #24a1de;
+    color: #fff;
+}
+
+/* Адаптивность */
+@media(max-width: 992px) {
+    .teaser-container { flex-direction: column; gap: 30px; text-align: center; }
+    .teaser-image-collage img { height: 300px; }
+}
+@media(max-width: 576px) {
+    .catalog-shop-links { flex-direction: column; }
+}
