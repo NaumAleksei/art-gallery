@@ -1862,3 +1862,149 @@ header {
 @media(max-width: 576px) {
     .catalog-shop-links { flex-direction: column; }
 }
+
+/* ==========================================================================
+   СТИЛИ ДЛЯ НОВОЙ СТРАНИЦЫ МАСТЕР-КЛАССОВ (classes.html)
+   ========================================================================== */
+
+/* Общая обертка страницы */
+.classes-catalog-page {
+    padding: 80px 0 100px;
+    background-color: #ffffff;
+}
+
+/* Коррекция сетки для промо-блоков */
+.classes-catalog-page .promo-grid {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+.classes-catalog-page .promo-grid-reverse {
+    flex-direction: row-reverse;
+}
+
+.classes-catalog-page .promo-content, 
+.classes-catalog-page .promo-image {
+    flex: 1;
+    width: 50%;
+}
+
+.classes-catalog-page .promo-image img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+/* Заголовки и тексты в промо-блоках */
+.classes-catalog-page .promo-subtitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: inherit; /* наследует ваш красивый шрифт сайта */
+}
+
+.classes-catalog-page .promo-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Сетка карточек с ценами (Убедитесь, что она отображается ровно) */
+.classes-catalog-page .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Стилизация самих карточек, если они потеряли вид */
+.classes-catalog-page .service-card {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.classes-catalog-page .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.classes-catalog-page .service-image {
+    height: 260px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.classes-catalog-page .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.classes-catalog-page .service-info {
+    padding: 25px;
+}
+
+.classes-catalog-page .service-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #566b58; /* Ваш фирменный зеленый */
+    margin-bottom: 10px;
+}
+
+.classes-catalog-page .service-info h3 {
+    font-size: 20px;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.classes-catalog-page .service-info p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Кнопка "Забронировать / Подробнее" */
+.classes-catalog-page .book-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #566b58;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+}
+
+.classes-catalog-page .book-btn:hover {
+    background-color: #435445;
+}
+
+/* Адаптивность для мобильных телефонов */
+@media (max-width: 992px) {
+    .classes-catalog-page .promo-grid,
+    .classes-catalog-page .promo-grid-reverse {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .classes-catalog-page .promo-content, 
+    .classes-catalog-page .promo-image {
+        width: 100%;
+    }
+    
+    .classes-catalog-page .promo-image img {
+        max-height: 300px;
+    }
+}
