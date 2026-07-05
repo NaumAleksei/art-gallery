@@ -1392,3 +1392,12 @@ header {
 @media (max-width: 576px) {
     .catalog-shop-links { flex-direction: column; }
 }
+
+/* Полное удаление декоративных рамок на сайте для всех устройств */
+.about-image img {
+    box-shadow: none !important;
+}
+.promo-image::before, 
+.promo-grid-reverse .promo-image::before {
+    display: none !important;
+}
