@@ -1086,6 +1086,47 @@ header {
     .classes-catalog-page .promo-image img { max-height: 300px; }
 }
 
+/* ========================================================
+   ЕДИНЫЙ СТИЛЬ КНОПОК ДЛЯ ДЕСКТОПА И МОБИЛКИ
+   (Применяется к Мастер-классам и Аксессуарам)
+   ======================================================== */
+.book-btn, .btn-teaser {
+    display: inline-flex !important; /* На десктопе кнопка будет аккуратной, по размеру текста */
+    justify-content: center;
+    align-items: center;
+    
+    /* Размеры и отступы как в блоке "Получить урок" */
+    padding: 16px 40px !important; 
+    box-sizing: border-box !important;
+    
+    /* Цветовая гамма (Темная сплошная заливка) */
+    background-color: var(--accent-color) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--accent-color) !important;
+    
+    /* Скругление углов (4px для легкого изящного эффекта) */
+    border-radius: 4px !important;
+    
+    /* Шрифты и текст капслоком */
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* Эффект при наведении мышки (на компьютерах) */
+@media (min-width: 769px) {
+    .book-btn:hover, .btn-teaser:hover {
+        background-color: transparent !important; /* При наведении становится прозрачной */
+        color: var(--accent-color) !important;      /* Текст меняется на темный */
+    }
+}
+
 /* --- ГАРАНТИРОВАННЫЙ МОБИЛЬНЫЙ ФИКС ДЛЯ КЛАССОВ, ИЗДЕЛИЙ И АКСЕССУАРОВ (ДО 768px) --- */
 @media (max-width: 768px) {
     /* Базовые элементы */
