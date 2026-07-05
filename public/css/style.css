@@ -1117,11 +1117,11 @@ header {
         margin: 0 auto;
         height: auto !important;
         display: flex !important;
-        flex-direction: column !important; /* Делаем карточку главным флекс-контейнером */
+        flex-direction: column !important; 
         box-shadow: none !important;
         border-radius: 0 !important;
         background: transparent !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important; /* Линия разделения */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important; 
         padding-bottom: 40px !important;
         margin-bottom: 40px !important;
     }
@@ -1130,22 +1130,19 @@ header {
         margin-bottom: 0 !important;
     }
 
-    /* Освобождаем внутренние элементы из контейнера, чтобы карточка управляла их порядком */
     .service-info {
         display: contents !important; 
     }
 
-    /* Задаем строгий пошаговый порядок */
     .service-info h3 {
-        order: 1 !important;        /* 1. ЗАГОЛОВОК НАВЕРХ */
-        font-size: 22px !important;
+        order: 1 !important;        
         margin-top: 10px !important;
         margin-bottom: 15px !important;
         text-align: left;
     }
 
     .service-image {
-        order: 2 !important;        /* 2. ФОТОГРАФИЯ ВТОРОЙ */
+        order: 2 !important;        
         height: 240px !important;
         width: 100% !important;
         border-radius: 8px !important;
@@ -1156,20 +1153,14 @@ header {
 
     .service-price, 
     .service-info p {
-        order: 3 !important;        /* 3. ТЕКСТ (Цена и Описание) ТРЕТЬИМ */
-        font-size: 14px !important;
+        order: 3 !important;        
         margin-bottom: 10px !important;
-        line-height: 1.6 !important;
         text-align: left;
     }
-    .service-price { font-weight: 700; margin-bottom: 5px !important; }
 
     .service-info .book-btn {
-        order: 4 !important;        /* 4. КНОПКА В САМЫЙ НИЗ */
+        order: 4 !important;        
         margin-top: 15px !important;
-        width: 100% !important;
-        text-align: center;
-        padding: 15px !important;
     }
 
     /* ========================================================
@@ -1177,29 +1168,27 @@ header {
        ======================================================== */
     .accessories-teaser {
         padding: 50px 20px !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important; /* Линия разделения */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important; 
     }
 
     .teaser-container {
         display: flex !important;
-        flex-direction: column !important; /* Управляет порядком содержимого */
+        flex-direction: column !important; 
         gap: 0 !important;
     }
 
-    /* Раскрываем текстовую обертку */
     .teaser-content {
         display: contents !important;
     }
 
     .teaser-content h2 {
-        order: 1 !important;        /* 1. ЗАГОЛОВОК НАВЕРХ */
-        font-size: 26px !important;
+        order: 1 !important;        
         margin-bottom: 15px !important;
-        text-align: center;
+        text-align: left !important; /* Делаем выравнивание влево, как и в остальных блоках */
     }
 
     .teaser-image-collage {
-        order: 2 !important;        /* 2. ФОТОГРАФИЯ ВТОРОЙ */
+        order: 2 !important;        
         width: 100% !important;
         margin-bottom: 15px !important;
     }
@@ -1211,18 +1200,13 @@ header {
     }
 
     .teaser-content p {
-        order: 3 !important;        /* 3. ТЕКСТ ТРЕТЬИМ */
-        font-size: 14px !important;
-        line-height: 1.6 !important;
+        order: 3 !important;        
         margin-bottom: 20px !important;
-        text-align: center;
+        text-align: left !important; /* Выравнивание влево */
     }
 
     .btn-teaser {
-        order: 4 !important;        /* 4. КНОПКА В САМЫЙ НИЗ */
-        width: 100% !important;
-        text-align: center !important;
-        padding: 15px !important;
+        order: 4 !important;        
         margin-top: 0 !important;
     }
 
@@ -1236,24 +1220,23 @@ header {
     }
 
     .promo-content {
-        display: contents !important; /* Разрушаем обертку для точечной сортировки */
+        display: contents !important; 
     }
 
-    /* Сортировка внутри промо-секций */
     .promo-content .promo-subtitle,
     .promo-content .promo-subtitle1,
     .promo-content .promo-subtitle2,
     .promo-content h2 {
-        order: 1 !important;        /* 1. ЗАГОЛОВКИ НАВЕРХ */
+        order: 1 !important;        
         text-align: left;
     }
-    .promo-content h2 { font-size: 2rem !important; margin-bottom: 20px !important; }
+    .promo-content h2 { margin-bottom: 20px !important; }
     .promo-content .promo-subtitle,
     .promo-content .promo-subtitle1,
-    .promo-content .promo-subtitle2 { font-size: 1.3rem !important; margin-top: 10px !important; margin-bottom: 5px !important; }
+    .promo-content .promo-subtitle2 { font-size: 1.1rem !important; margin-top: 10px !important; margin-bottom: 5px !important; }
 
     .promo-image {
-        order: 2 !important;        /* 2. ФОТОГРАФИЯ ВТОРОЙ */
+        order: 2 !important;        
         width: 100% !important;
         margin-bottom: 20px !important;
     }
@@ -1261,22 +1244,17 @@ header {
     .promo-image::before { display: none !important; }
 
     .promo-content p:not([class]) {
-        order: 3 !important;        /* 3. ТЕКСТ ТРЕТЬИМ */
-        font-size: 14px !important;
-        line-height: 1.6 !important;
+        order: 3 !important;        
         margin-bottom: 20px !important;
         text-align: left;
     }
 
     .btn-primary-dark {
-        order: 4 !important;        /* 4. КНОПКА В САМЫЙ НИЗ */
+        order: 4 !important;        
         margin-top: 0 !important;
-        width: 100%;
-        text-align: center;
-        padding: 15px;
     }
 
-    /* Тонкие линии между большими контентными секциями экрана */
+    /* Тонкие линии между контентными секциями экрана */
     .master-classes, .second-promo, .promo-section, .services-section {
         border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important;
         padding: 50px 20px !important;
@@ -1284,7 +1262,63 @@ header {
         margin-top: 0 !important;
     }
 
-    /* Мобильные фиксы окон, контактов и футера */
+    /* ========================================================
+       4. ЕДИНЫЙ СТИЛЬ КНОПОК И ШРИФТОВ ДЛЯ ВСЕХ БЛОКОВ
+       ======================================================== */
+       
+    /* Унифицируем все кнопки в мобильной версии */
+    .book-btn, .btn-teaser, .btn-primary-dark {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 16px 20px !important;
+        
+        /* Цветовая гамма сайта (Темная тема) */
+        background-color: var(--accent-color) !important; 
+        color: #ffffff !important;
+        border: 1px solid var(--accent-color) !important;
+        
+        /* Скругления углов (0 - полностью острые, можете поставить 4px или 8px по вкусу) */
+        border-radius: 4px !important; 
+        
+        /* Текстовые параметры кнопки */
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        text-align: center !important;
+        text-decoration: none !important;
+        transition: opacity 0.3s ease !important;
+    }
+    .book-btn:active, .btn-teaser:active, .btn-primary-dark:active {
+        opacity: 0.8 !important;
+    }
+
+    /* Унифицируем все заголовки блоков (Классы, Изделия, Аксессуары) */
+    .service-info h3, .teaser-content h2, .promo-content h2 {
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 2.2rem !important; /* Единый крупный размер */
+        font-weight: 500 !important;
+        color: var(--accent-color) !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Унифицируем весь текст описаний */
+    .service-info p, .teaser-content p, .promo-content p:not([class]), .service-price {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 0.95rem !important; /* Оптимальный читаемый размер */
+        color: #444444 !important; /* Умеренно темный цвет для текстов */
+        line-height: 1.6 !important;
+    }
+    .service-price {
+        font-weight: 700 !important;
+        color: var(--accent-color) !important;
+    }
+
+    /* ========================================================
+       Прочие мобильные фиксы окон, контактов и футера
+       ======================================================== */
     .service-popup-container { flex-direction: column; }
     .service-popup-image { max-width: 100%; height: 250px; }
     .service-popup-info { padding: 25px; }
