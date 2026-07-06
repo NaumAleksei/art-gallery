@@ -1212,13 +1212,6 @@ header {
         display: contents !important; 
     }
 
-    .promo-content .promo-subtitle,
-    .promo-content .promo-subtitle1,
-    .promo-content .promo-subtitle2,
-    .promo-content h2 {
-        order: 1 !important;        
-        text-align: left;
-    }
     .promo-content h2 { margin-bottom: 20px !important; }
     .promo-content .promo-subtitle,
     .promo-content .promo-subtitle1,
@@ -1273,15 +1266,6 @@ header {
     }
     .book-btn:active, .btn-teaser:active, .btn-primary-dark:active {
         opacity: 0.8 !important;
-    }
-
-    /* Унифицируем все заголовки блоков на мобильных */
-    .service-info h3, .teaser-content h2, .promo-content h2 {
-        font-family: 'Cormorant Garamond', serif !important;
-        font-size: 2.2rem !important; 
-        font-weight: 500 !important;
-        color: var(--accent-color) !important;
-        line-height: 1.2 !important;
     }
 
     /* Унифицируем весь текст описаний на мобильных */
@@ -1391,7 +1375,7 @@ header {
 .accessories-teaser h2,
 .teaser-content h2,
 .promo-content h2,
-.promo-subtitle { /* <-- Добавили класс сюда */
+.promo-subtitle { 
     font-family: 'Cormorant Garamond', serif !important;
     font-size: 3rem !important;          
     font-weight: 500 !important;
@@ -1403,7 +1387,7 @@ header {
     text-transform: none !important; 
 }
 
-/* 2. Точечная корректировка строго для мобильной версии (до 768px) */
+/* 2. Точечная корректировка строго для mobile версии (до 768px) */
 @media (max-width: 768px) {
     .about-grid h2,
     .services-section h2,
@@ -1412,8 +1396,8 @@ header {
     .accessories-teaser h2,
     .teaser-content h2,
     .promo-content h2,
-    .promo-subtitle { /* <-- И сюда тоже добавили класс */
-        font-size: 2.2rem !important;     /* Сделали обратно крупным (2.2rem), так как теперь текст не рвется тегом <br> */
+    .promo-subtitle { 
+        font-size: 2.2rem !important;     
         line-height: 1.3 !important;     
         margin-bottom: 15px !important;  
         text-transform: none !important; 
@@ -1427,22 +1411,28 @@ header {
 }
 
 /* ========================================================
-   4. ШАХМАТНЫЙ ПОРЯДОК ДЛЯ БЛОКОВ НА ДЕСКТОПЕ (ПК)
+   3. ШАХМАТНЫЙ ПОРЯДОК ДЛЯ БЛОКОВ НА ДЕСКТОПЕ (ПК)
    ======================================================== */
 @media (min-width: 769px) {
-    /* Меняем порядок колонок на противоположный для блока мастер-классов */
-    .master-classes-teaser .promo-grid {
+    /* Меняем порядок колонок на противоположный для четных промо-секция и блоков мастер-классов */
+    .master-classes-teaser:nth-child(even) .promo-grid,
+    .promo-section:nth-child(even) .promo-grid,
+    .promo-grid-reverse {
         direction: rtl; 
     }
 
     /* Возвращаем направление контента в нормальный режим, чтобы текст читался слева направо */
-    .master-classes-teaser .promo-content {
+    .master-classes-teaser:nth-child(even) .promo-content,
+    .promo-section:nth-child(even) .promo-content,
+    .promo-grid-reverse .promo-content {
         direction: ltr; 
         padding-right: 0;
         padding-left: 40px; 
     }
     
-    .master-classes-teaser .promo-image {
+    .master-classes-teaser:nth-child(even) .promo-image,
+    .promo-section:nth-child(even) .promo-image,
+    .promo-grid-reverse .promo-image {
         direction: ltr;
     }
 }
