@@ -1399,7 +1399,7 @@ header {
     text-transform: none !important;     
 }
 
-/* Изменение размера заголовков на мобильных (до 768px) */
+/* Изменение размеров заголовков строго для мобильных */
 @media (max-width: 768px) {
     .about-grid h2,
     .services-section h2,
@@ -1409,9 +1409,11 @@ header {
     .teaser-content h2,
     .promo-content h2,
     .promo-subtitle {
-        font-size: 2.2rem !important;    
+        font-size: 1.8rem !important;    /* Уменьшили с 2.2rem до 1.8rem, чтобы длинные слова аккуратно помещались */
+        line-height: 1.3 !important;    /* Оптимальный интервал для заголовков в две строки */
         margin-bottom: 15px !important;  
         text-transform: none !important; 
+        word-wrap: break-word;          /* Защита от вылезания текста за пределы экрана */
     }
 }
 
