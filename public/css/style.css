@@ -1440,3 +1440,39 @@ header {
 .info-image img {
     border-radius: 12px !important;
 }
+
+/* ========================================================
+   ГЛОБАЛЬНОЕ УНИФИЦИРОВАНИЕ ЗАГОЛОВКОВ НА ВСЕМ САЙТЕ
+   (О нас, Мастер-классы, Аксессуары, Промо)
+   ======================================================== */
+
+/* Применяем единый шрифт, цвет и пропорции для десктопной версии */
+.about-grid h2,
+.services-section h2,
+.service-info h3,
+.accessories-teaser h2,
+.teaser-content h2,
+.promo-content h2 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 3rem !important;          /* Крупный, элегантный размер для компьютеров */
+    font-weight: 500 !important;
+    color: var(--accent-color) !important; /* Ваш главный фирменный темный цвет */
+    line-height: 1.2 !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 0 !important;
+    margin-bottom: 25px !important;      /* Одинаковый аккуратный отступ до текста или фото */
+    text-transform: none !important;     /* Убираем принудительный капслок, если он где-то был */
+}
+
+/* Точечная корректировка для мобильной версии (до 768px) */
+@media (max-width: 768px) {
+    .about-grid h2,
+    .services-section h2,
+    .service-info h3,
+    .accessories-teaser h2,
+    .teaser-content h2,
+    .promo-content h2 {
+        font-size: 2.2rem !important;    /* Аккуратный единый размер для экранов смартфонов */
+        margin-bottom: 15px !important;  /* Чуть меньший отступ на мобильных */
+    }
+}
