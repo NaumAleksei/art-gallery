@@ -1379,15 +1379,19 @@ header {
     border-radius: 12px 12px 0 0 !important; 
 }
 
-/* 3. Глобальное унифицирование заголовков на всем сайте */
+/* ========================================================
+   ГЛОБАЛЬНОЕ УНИФИЦИРОВАНИЕ ЗАГОЛОВКОВ НА ВСЕМ САЙТЕ
+   (С исправлением регистра и размеров для мобильных)
+   ======================================================== */
+
+/* 1. Настройки для компьютеров и больших экранов (Десктоп) */
 .about-grid h2,
 .services-section h2,
-.services-section h1, 
+.services-section h1,
 .service-info h3,
 .accessories-teaser h2,
 .teaser-content h2,
-.promo-content h2,
-.promo-subtitle {
+.promo-content h2 {
     font-family: 'Cormorant Garamond', serif !important;
     font-size: 3rem !important;          
     font-weight: 500 !important;
@@ -1396,10 +1400,10 @@ header {
     letter-spacing: 0.5px !important;
     margin-top: 0 !important;
     margin-bottom: 25px !important;      
-    text-transform: none !important;     
+    text-transform: none !important; /* Отменяем капслок */
 }
 
-/* Изменение размеров заголовков строго для мобильных */
+/* 2. Точечная корректировка строго для мобильной версии (до 768px) */
 @media (max-width: 768px) {
     .about-grid h2,
     .services-section h2,
@@ -1407,13 +1411,12 @@ header {
     .service-info h3,
     .accessories-teaser h2,
     .teaser-content h2,
-    .promo-content h2,
-    .promo-subtitle {
-        font-size: 1.8rem !important;    /* Уменьшили с 2.2rem до 1.8rem, чтобы длинные слова аккуратно помещались */
-        line-height: 1.3 !important;    /* Оптимальный интервал для заголовков в две строки */
+    .promo-content h2 {
+        font-size: 1.8rem !important;     /* Уменьшили до 1.8rem, чтобы длинные слова (Творческие мастер-классы) аккуратно вставали в рамки экрана */
+        line-height: 1.3 !important;     /* Оптимальный интервал, чтобы две строки не слипались и не разлетались */
         margin-bottom: 15px !important;  
-        text-transform: none !important; 
-        word-wrap: break-word;          /* Защита от вылезания текста за пределы экрана */
+        text-transform: none !important; /* Гарантированный отказ от капслока на смартфонах */
+        word-wrap: break-word !important;/* Защита от вылезания длинных слов за границы экрана */
     }
 }
 
