@@ -1316,7 +1316,6 @@ header {
     .catalog-shop-links { flex-direction: column; }
 }
 
-
 /* ========================================================
    ГЛОБАЛЬНЫЕ ИСПРАВЛЕНИЯ ДЛЯ ДЕСКТОПА И МОБИЛКИ
    ======================================================== */
@@ -1357,15 +1356,17 @@ header {
     border-radius: 12px !important;
 }
 
-/* Скругляем только верхние углы у карточек мастер-классов */
+/* Скругляем только upper углы у карточек мастер-классов */
 .service-image img,
 .classes-catalog-page .service-image img {
     border-radius: 12px 12px 0 0 !important; 
 }
 
 /* ========================================================
-   ГЛОБАЛЬНОЕ УНИФИЦИРОВАНИЕ И НАСТРОЙКА КРУПНЫХ ЗАГОЛОВКОВ НА ПК
+   ГЛОБАЛЬНОЕ УНИФИЦИРОВАНИЕ ЗАГОЛОВКОВ НА ВСЕМ САЙТЕ
    ======================================================== */
+
+/* 1. Настройки для компьютеров и больших экранов (Десктоп) */
 .about-grid h2,
 .services-section h2,
 .services-section h1,
@@ -1373,7 +1374,9 @@ header {
 .accessories-teaser h2,
 .teaser-content h2,
 .promo-content h2,
-.promo-subtitle { 
+.promo-content .promo-subtitle,
+.promo-content .promo-subtitle1,
+.promo-content .promo-subtitle2 { 
     font-family: 'Cormorant Garamond', serif !important;
     font-size: 3rem !important;          
     font-weight: 500 !important;
@@ -1385,6 +1388,7 @@ header {
     text-transform: none !important; 
 }
 
+/* 2. Точечная корректировка строго для мобильной версии (до 768px) */
 @media (max-width: 768px) {
     .about-grid h2,
     .services-section h2,
@@ -1393,12 +1397,19 @@ header {
     .accessories-teaser h2,
     .teaser-content h2,
     .promo-content h2,
-    .promo-subtitle { 
-        font-size: 2.2rem !important;     
+    .promo-content .promo-subtitle,
+    .promo-content .promo-subtitle1,
+    .promo-content .promo-subtitle2 { 
+        font-size: 2.2rem !important; /* Гарантированный крупный размер для мобильных */
         line-height: 1.3 !important;     
         margin-bottom: 15px !important;  
         text-transform: none !important; 
         word-wrap: break-word !important;
+    }
+
+    /* Отключаем принудительный перенос строки на телефонах */
+    .promo-subtitle .desktop-br {
+        display: none !important;
     }
 }
 
@@ -1406,19 +1417,21 @@ header {
    4. ШАХМАТНЫЙ ПОРЯДОК ДЛЯ БЛОКОВ НА ДЕСКТОПЕ (ПК)
    ======================================================== */
 @media (min-width: 769px) {
-    /* Меняем порядок колонок на противоположный для секции мастер-классов (с классом master-classes) */
-    .master-classes .promo-grid {
-        direction: rtl; 
+    /* Безопасное изменение порядка контента через order для Grid/Flexbox */
+    .master-classes-teaser .promo-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
     }
 
-    /* Возвращаем направление контента в нормальный режим, чтобы текст читался слева направо */
-    .master-classes .promo-grid .promo-content {
-        direction: ltr; 
-        padding-right: 0;
-        padding-left: 40px; 
+    /* Текст уходит направо */
+    .master-classes-teaser .promo-content {
+        order: 2 !important;
+        padding-right: 0 !important;
+        padding-left: 40px !important; 
     }
     
-    .master-classes .promo-grid .promo-image {
-        direction: ltr;
+    /* Фотография уходит налево */
+    .master-classes-teaser .promo-image {
+        order: 1 !important;
     }
 }
