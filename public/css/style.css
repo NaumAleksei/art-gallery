@@ -1364,10 +1364,8 @@ header {
 }
 
 /* ========================================================
-   ГЛОБАЛЬНОЕ УНИФИЦИРОВАНИЕ ЗАГОЛОВКОВ НА ВСЕМ САЙТЕ
+   ГЛОБАЛЬНОЕ УНИФИЦИРОВАНИЕ И НАСТРОЙКА КРУПНЫХ ЗАГОЛОВКОВ НА ПК
    ======================================================== */
-
-/* 1. Настройки для компьютеров и больших экранов (Десктоп) */
 .about-grid h2,
 .services-section h2,
 .services-section h1,
@@ -1387,7 +1385,6 @@ header {
     text-transform: none !important; 
 }
 
-/* 2. Точечная корректировка строго для mobile версии (до 768px) */
 @media (max-width: 768px) {
     .about-grid h2,
     .services-section h2,
@@ -1403,36 +1400,25 @@ header {
         text-transform: none !important; 
         word-wrap: break-word !important;
     }
-
-    /* Отключаем принудительный перенос строки на телефонах */
-    .promo-subtitle .desktop-br {
-        display: none !important;
-    }
 }
 
 /* ========================================================
-   3. ШАХМАТНЫЙ ПОРЯДОК ДЛЯ БЛОКОВ НА ДЕСКТОПЕ (ПК)
+   4. ШАХМАТНЫЙ ПОРЯДОК ДЛЯ БЛОКОВ НА ДЕСКТОПЕ (ПК)
    ======================================================== */
 @media (min-width: 769px) {
-    /* Меняем порядок колонок на противоположный для четных промо-секция и блоков мастер-классов */
-    .master-classes-teaser:nth-child(even) .promo-grid,
-    .promo-section:nth-child(even) .promo-grid,
-    .promo-grid-reverse {
+    /* Меняем порядок колонок на противоположный для секции мастер-классов (с классом master-classes) */
+    .master-classes .promo-grid {
         direction: rtl; 
     }
 
     /* Возвращаем направление контента в нормальный режим, чтобы текст читался слева направо */
-    .master-classes-teaser:nth-child(even) .promo-content,
-    .promo-section:nth-child(even) .promo-content,
-    .promo-grid-reverse .promo-content {
+    .master-classes .promo-grid .promo-content {
         direction: ltr; 
         padding-right: 0;
         padding-left: 40px; 
     }
     
-    .master-classes-teaser:nth-child(even) .promo-image,
-    .promo-section:nth-child(even) .promo-image,
-    .promo-grid-reverse .promo-image {
+    .master-classes .promo-grid .promo-image {
         direction: ltr;
     }
 }
