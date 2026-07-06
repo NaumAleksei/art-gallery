@@ -1440,3 +1440,10 @@ header {
         direction: ltr;
     }
 }
+
+@media (max-width: 768px) {
+    /* Отключаем принудительный перенос строки на телефонах */
+    .promo-subtitle .desktop-br {
+        display: none !important;
+    }
+}
