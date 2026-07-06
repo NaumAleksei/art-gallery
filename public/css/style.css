@@ -1127,6 +1127,33 @@ header {
     }
 }
 
+/* ========================================================
+   ШАХМАТНЫЙ ПОРЯДОК ДЛЯ БЛОКОВ НА ДЕСКТОПЕ (ПК)
+   ======================================================== */
+@media (min-width: 769px) {
+    /* Находим каждый четный блок с классом promo-grid или promo-grid-reverse */
+    .master-classes-teaser:nth-child(even) .promo-grid,
+    .promo-section:nth-child(even) .promo-grid,
+    .promo-grid-reverse {
+        direction: rtl; /* Разворачивает порядок колонок (справа налево) */
+    }
+
+    /* Возвращаем направление текста обратно в нормальный режим (слева направо), 
+       чтобы буквы и точки не перепутались */
+    .master-classes-teaser:nth-child(even) .promo-content,
+    .promo-section:nth-child(even) .promo-content,
+    .promo-grid-reverse .promo-content {
+        direction: ltr; 
+        padding-right: 40px; /* Добавляем аккуратный отступ между текстом и фото */
+    }
+    
+    .master-classes-teaser:nth-child(even) .promo-image,
+    .promo-section:nth-child(even) .promo-image,
+    .promo-grid-reverse .promo-image {
+        direction: ltr;
+    }
+}
+
 /* --- ГАРАНТИРОВАННЫЙ МОБИЛЬНЫЙ ФИКС ДЛЯ КЛАССОВ, ИЗДЕЛИЙ И АКСЕССУАРОВ (ДО 768px) --- */
 @media (max-width: 768px) {
     /* Базовые элементы */
