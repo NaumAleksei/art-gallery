@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('mobile-menu');
     const mainNav = document.getElementById('main-nav');
 
-    // 3. УНИВЕРСАЛЬНАЯ ФУНКЦИЯ ОТПРАВКИ (БЕЗОПАСНАЯ)
-    // Работает через Vercel Serverless Function в папке /api/send-message.js
+    // 3. УНИВЕРСАЛЬНАЯ ФУНКЦИЯ ОТПРАВКИ
     async function sendToTelegram(data) {
         try {
             const response = await fetch('/api/send-message', {
@@ -106,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. МОДАЛЬНОЕ ОКНО: БЕСПЛАТНЫЙ УРОК (ЛИД-МАГНИТ)
+    // 6. МОДАЛЬНОЕ ОКНО: БЕСПЛАТНЫЙ УРОК
     const lessonModal = document.getElementById('lesson-modal');
     const openLessonBtn = document.getElementById('open-lesson-modal');
     const closeLessonBtn = lessonModal?.querySelector('.close-modal');
@@ -146,10 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const success = await sendToTelegram(data);
 
             if (success) {
-                // Открываем видео
                 window.open('https://vkvideo.ru/video-237346777_456239022?list=ln-tHWeNXQnu8AGNTEPzw', '_blank');
                 
-                // Скачиваем PDF
                 const link = document.createElement('a');
                 link.href = 'public/files/guide.pdf';
                 link.download = 'Подарок_от_MarinaArt.pdf';
@@ -167,45 +164,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 7. МОДАЛЬНОЕ ОКНО: ПОДРОБНЕЕ О МАСТЕР-КЛАССЕ
-const serviceModal = document.getElementById('service-modal');
-const closeService = document.getElementById('close-service');
+    const serviceModal = document.getElementById('service-modal');
+    const closeService = document.getElementById('close-service');
 
-// Проверяем, есть ли кнопка закрытия на текущей странице, прежде чем вешать событие
-if (closeService) {
-    closeService.addEventListener('click', () => {
-        if (serviceModal) serviceModal.style.display = 'none';
-        document.body.style.overflow = '';
-    });
-}
-
-// Код открытия окна оставляем, он безопасен, так как слушает клики по всему документу
-document.addEventListener('click', (e) => {
-    // Проверяем, существует ли вообще модальное окно на этой странице
-    if (!serviceModal) return; 
-
-    if (e.target.classList.contains('open-service-modal')) {
-        const card = e.target.closest('.service-card');
-        const title = card.querySelector('h3').innerText;
-        const price = card.querySelector('.service-price').innerText;
-        const desc = card.querySelector('p').innerHTML;
-        const imgSrc = card.querySelector('img').src;
-
-        document.getElementById('service-popup-title').innerText = title;
-        document.getElementById('service-popup-price').innerText = price;
-        document.getElementById('service-popup-desc').innerHTML = desc;
-        document.getElementById('service-popup-img').src = imgSrc;
-
-        const message = encodeURIComponent(`Здравствуйте! Хочу уточнить детали по мастер-классу "${title}" (${price}).`);
-        document.getElementById('service-tg-link').href = `https://t.me/Mari_naumova_art?text=${message}`;
-
-        serviceModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+    if (closeService) {
+        closeService.addEventListener('click', () => {
+            if (serviceModal) serviceModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
     }
-});
 
-    closeService?.addEventListener('click', () => {
-        serviceModal.style.display = 'none';
-        document.body.style.overflow = '';
+    document.addEventListener('click', (e) => {
+        if (!serviceModal) return; 
+
+        if (e.target.classList.contains('open-service-modal')) {
+            const card = e.target.closest('.service-card');
+            const title = card.querySelector('h3').innerText;
+            const price = card.querySelector('.service-price').innerText;
+            const desc = card.querySelector('p').innerHTML;
+            const imgSrc = card.querySelector('img').src;
+
+            document.getElementById('service-popup-title').innerText = title;
+            document.getElementById('service-popup-price').innerText = price;
+            document.getElementById('service-popup-desc').innerHTML = desc;
+            document.getElementById('service-popup-img').src = imgSrc;
+
+            const message = encodeURIComponent(`Здравствуйте! Хочу уточнить детали по мастер-классу "${title}" (${price}).`);
+            document.getElementById('service-tg-link').href = `https://t.me/Mari_naumova_art?text=${message}`;
+
+            serviceModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
     });
 
     // 8. МОДАЛЬНОЕ ОКНО: ОБРАТНЫЙ ЗВОНОК
@@ -258,7 +247,7 @@ document.addEventListener('click', (e) => {
         });
     }
 
-    // 9. ГЕНЕРАЦИЯ КАРТОЧЕК И КАРУСЕЛЬ
+    // 9. ГЕНЕРАЦИЯ КАРТОЧЕК И КАРУСЕЛЬ КАРТИН
     function createCardHTML(p) {
         return `
             <div class="art-card">
@@ -301,7 +290,9 @@ document.addEventListener('click', (e) => {
             }
             requestAnimationFrame(animate);
         }
-        window.addEventListener('load', animate);
+        
+        animate(); // Исправлен запуск без ожидания window.load
+
         track.addEventListener('mouseenter', () => isPaused = true);
         track.addEventListener('mouseleave', () => isPaused = false);
 
@@ -329,7 +320,60 @@ document.addEventListener('click', (e) => {
     window.scrollPrev2 = () => control2?.move(1);
     window.scrollNext2 = () => control2?.move(-1);
 
-    // 10. КОРЗИНА И ЛАЙКИ
+    // 10. КАРУСЕЛЬ И МОДАЛЬНОЕ ОКНО YOUTUBE SHORTS
+    const ytTrack = document.getElementById('ytVideoTrack');
+    const ytPrevBtn = document.getElementById('ytPrevBtn');
+    const ytNextBtn = document.getElementById('ytNextBtn');
+    const ytModal = document.getElementById('ytModal');
+    const ytPlayer = document.getElementById('ytPlayer');
+    const ytCloseBtn = document.querySelector('.yt-modal-close');
+
+    if (ytTrack && ytPrevBtn && ytNextBtn) {
+        ytNextBtn.addEventListener('click', () => {
+            const card = ytTrack.querySelector('.video-card');
+            const cardWidth = card ? card.offsetWidth + 20 : 300;
+            ytTrack.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        ytPrevBtn.addEventListener('click', () => {
+            const card = ytTrack.querySelector('.video-card');
+            const cardWidth = card ? card.offsetWidth + 20 : 300;
+            ytTrack.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+    }
+
+    document.querySelectorAll('.video-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const videoId = card.getAttribute('data-youtube-id');
+            if (videoId && !videoId.includes('YOUR_SHORTS_ID') && ytPlayer && ytModal) {
+                ytPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                ytModal.style.display = 'flex';
+            }
+        });
+    });
+
+    const closeYtModal = () => {
+        if (ytModal && ytPlayer) {
+            ytModal.style.display = 'none';
+            ytPlayer.src = '';
+        }
+    };
+
+    if (ytCloseBtn) ytCloseBtn.addEventListener('click', closeYtModal);
+
+    if (ytModal) {
+        ytModal.addEventListener('click', (e) => {
+            if (e.target === ytModal) closeYtModal();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && ytModal && ytModal.style.display === 'flex') {
+            closeYtModal();
+        }
+    });
+
+    // 11. КОРЗИНА И ЛАЙКИ
     let cart = JSON.parse(localStorage.getItem('cartData')) || [];
 
     const updateCartUI = () => {
@@ -367,7 +411,6 @@ document.addEventListener('click', (e) => {
     };
 
     document.addEventListener('click', (e) => {
-        // Добавление в корзину
         const addBtn = e.target.closest('.add-to-cart-btn');
         if (addBtn) {
             const card = addBtn.closest('.art-card');
@@ -381,7 +424,6 @@ document.addEventListener('click', (e) => {
             }
         }
 
-        // Лайки
         const likeBtn = e.target.closest('.like-btn');
         if (likeBtn) {
             const icon = likeBtn.querySelector('i');
@@ -398,7 +440,6 @@ document.addEventListener('click', (e) => {
             }
         }
 
-        // Лайтбокс
         if (e.target.tagName === 'IMG' && e.target.closest('.art-image')) {
             lightboxImg.src = e.target.src;
             lightboxCaption.innerText = e.target.alt;
@@ -407,7 +448,6 @@ document.addEventListener('click', (e) => {
         }
     });
 
-    // Управление корзиной (Drawer)
     document.querySelector('.cart-icon')?.addEventListener('click', (e) => {
         e.preventDefault();
         cartDrawer.classList.add('open');
@@ -419,13 +459,11 @@ document.addEventListener('click', (e) => {
         cartOverlay?.classList.remove('open');
     });
 
-    // Лайтбокс закрытие
     lightbox?.addEventListener('click', () => {
         lightbox.classList.remove('active');
         setTimeout(() => lightbox.style.display = 'none', 300);
     });
 
-    // Копирование email
     document.querySelector('.copy-email')?.addEventListener('click', function(e) {
         e.preventDefault();
         const email = this.getAttribute('data-email');
@@ -437,7 +475,6 @@ document.addEventListener('click', (e) => {
         });
     });
 
-    // Оформление заказа
     document.getElementById('checkout-btn')?.addEventListener('click', () => {
         if (cart.length === 0) return alert("Корзина пуста");
         const total = cart.reduce((sum, item) => sum + parseInt(item.price.replace(/\s/g, '')), 0);
